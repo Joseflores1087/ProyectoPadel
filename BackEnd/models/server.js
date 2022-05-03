@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 class Server {
   constructor() {
     this.app = express();
+    this.app.use(cors());
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
     //Middlewares
@@ -45,7 +46,7 @@ class Server {
 
   listen() {
     this.app.listen(this.port, () => {
-      console.log("Servidor corriendo en puerto", this.port);
+      console.log("servidor corriento Puerto", process.env.PORT);
     });
   }
 }
