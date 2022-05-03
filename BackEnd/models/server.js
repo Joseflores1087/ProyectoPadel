@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
 const myconn = require("express-myconnection");
+const { database } = require("../database/key");
 const bodyParser = require('body-parser')
 
 class Server {
@@ -11,7 +12,7 @@ class Server {
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
     //Middlewares
-
+this.middlewares();
     //Rutas | Endpoints
     this.routes();
   }
@@ -50,4 +51,5 @@ class Server {
     });
   }
 }
+
 module.exports = Server;
