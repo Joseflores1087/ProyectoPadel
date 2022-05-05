@@ -96,6 +96,11 @@ const deleteUser = async (req, res = response) => {
 const changePaass = async (req, res = response) => {
   // const {id}= req.params;
   console.log('id');
+  try {
+    
+  } catch (error) {
+    
+  }
   //  try {
   //    const usuario = await pool.query(
   //      "SELECT * FROM users WHERE id = ?",
