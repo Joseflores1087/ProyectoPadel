@@ -3,7 +3,7 @@ const pool = require("../database/database");
 const bcryptjs = require("bcryptjs");
 const fetch = require("node-fetch");
 const nodemailer = require("nodemailer");
-// const { param } = require("../routes/user");
+//const { param } = require("../routes/user");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
