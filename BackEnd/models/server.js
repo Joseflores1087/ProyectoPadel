@@ -3,8 +3,8 @@ const cors = require("cors");
 const mysql = require("mysql");
 const { database } = require("../database/key");
 const myconn = require("express-myconnection");
-const bodyParser = require("body-parser")
-const path = require("path");
+const { database } = require("../database/key");
+const bodyParser = require('body-parser')
 
 class Server {
   constructor() {
@@ -12,9 +12,8 @@ class Server {
     this.app.use(cors());
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
-
     //Middlewares
-    this.middlewares();
+this.middlewares();
     //Rutas | Endpoints
     this.routes();
   }
@@ -59,4 +58,5 @@ class Server {
     });
   }
 }
+
 module.exports = Server;
