@@ -3,7 +3,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 const { database } = require("../database/key");
 const myconn = require("express-myconnection");
-const { database } = require("../database/key");
+
 const bodyParser = require('body-parser')
 
 class Server {

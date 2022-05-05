@@ -1,8 +1,8 @@
 const { request, response } = require("express");
 const pool = require("../database/database");
 const bcryptjs = require("bcryptjs");
-const fetch = require("node-fetch");
-const nodemailer = require("nodemailer");
+// const fetch = require("node-fetch");
+// const nodemailer = require("nodemailer");
 //const { param } = require("../routes/user");
 
 //-------------------------------------------------------
