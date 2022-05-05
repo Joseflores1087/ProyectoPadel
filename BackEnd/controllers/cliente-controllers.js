@@ -3,7 +3,6 @@ const pool = require("../database/database");
 // const bcryptjs = require("bcryptjs");
 // const fetch = require("node-fetch");
 // const nodemailer = require("nodemailer");
-const { param } = require("../routes/cliente");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
@@ -126,7 +125,6 @@ const newCliente = async (req, res = response) => {
 //-------------------------------------------------------------------------
 //-------------------------EDITAR PERSONA----------------------------------
 const editUser = async (req, res = response) => {
-  console.log(req.params);
   console.log(req.body);
   const { id } = req.params;
   const { nombre, apellido, dni, revista, mail } = req.body;

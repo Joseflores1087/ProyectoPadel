@@ -1,60 +1,37 @@
-const { response, request } = require("express");
+const { request, response } = require("express");
 const pool = require("../database/database");
-const bcryptjs = require("bcryptjs");
-const fetch = require("node-fetch");
-const nodemailer = require("nodemailer");
+const bcryptjs = require("bcrypt")
+// const fetch = require("node-fetch");
+// const nodemailer = require("nodemailer");
 // const { param } = require("../routes/user");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
-const usersGet = async (req = request, res = response) => {
-  console.log(req.user);
+const GetUser = async (req = request, res = response) => {
   try {
-    console.log(req.session.user);
-    users = await pool.query ("SELECT * FROM users WHERE estado = 'A'");
-  } catch (e) {
-    res.status(404).json({ message: 'Somenthing goes wrong!' });
-  }
-   if (users.length > 0) {
-    console.log(req.session.userId);
-     res.send(users);
-   } 
-   else {
-     res.send('No existen Usuarios');
-      res.status(404).json({ 
-        message: 'Not result' 
-      });
-   }
-};
-
-//-------------------------------------------------------
-//GET by ID----------------------------------------------------
-const getById = async (req = request, res = response) => {
-  try {
-    users = await pool.query ("SELECT * FROM users WHERE id = ?",[id]);
+    users = await pool.query("SELECT * FROM user WHERE estado = 'A'");
   } catch (e) {
     res.status(404).json({ message: 'Somenthing goes wrong!' });
   }
   if (users.length > 0) {
-    res.send(users);
-  } else {
-    res.status(404).json({ 
-      message: 'Not result' });
-      
-      
+    return res.send(users);
+  }
+  else {
+    res.send('No existen Usuarios cargados');
+    console.log('Exito');
   }
 };
+
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
-const newUsers = async (req, res = response) => {
+const NewUser = async (req, res = response) => {
   console.log(req.body);
-  const { nombre, apellido, dni, revista, mail, password } = req.body;
-  // const {id_crea} = req.session.user;
-  console.log(password);
+  const { nombre, apellido, dni, celular, correo, password } = req.body;
+
   try {
     const usuario = await pool.query(
-      "SELECT * FROM users WHERE revista = ?",
-      [revista],
+      "SELECT * FROM user WHERE dni = ?",
+      [dni],
       async (error, results) => {
         if (error) {
           console.log(error, "hola");
@@ -65,7 +42,7 @@ const newUsers = async (req, res = response) => {
           if (results[0]) {
             return res.status(200).json({
               ok: false,
-              msj: "Ya existe un Usuario Asociado a es N° Revista",
+              msj: "Ya existe un Usuario Asociado a ese DNI",
             });
           } else if (!results[0]) {
             //Encriptar Password
@@ -74,9 +51,9 @@ const newUsers = async (req, res = response) => {
             let  passwordhash = await  bcryptjs.hash(password, salt);
              //console.log(passwordhash);
             //Query
-            let myQuery = `INSERT INTO users ( nombre, apellido, dni,revista,email, pass, id_crea) 
-            VALUES ( '${nombre}','${apellido}','${dni}','${revista}','${mail}','${passwordhash}','${req.session.user}')`;
-            pool.query(myQuery, (error, results) => {
+       let myQuery = `INSERT INTO user( nombre, apellido, dni,celular,correo, password) 
+             VALUES ( '${nombre}','${apellido}','${dni}','${celular}','${correo}','${passwordhash}')`;
+             pool.query(myQuery, (error, results) => {
               if (error) {
                 return res.status(400).json(error);
                 console.log(error);
@@ -89,120 +66,36 @@ const newUsers = async (req, res = response) => {
              
             });
           }
-          // //Mail
-          // const nodemailer = require("nodemailer");
-          // // create reusable transporter object using the default SMTP transport
-          // const transporter = nodemailer.createTransport({
-          //   host: "smtp.gmail.com",
-          //   port: 465,
-          //   secure: true, // true for 465, false for other ports
-          //   auth: {
-          //     user: "jose.flores1087@gmail.com", // generated ethereal user
-          //     pass: "xetbwxsxkmtrvczr", // generated ethereal password
-          //   },
-          //   tls: {
-          //     rejectUnauthorized: false,
-          //   },
-          // });
-          // transporter.verify().then(() => {
-          //   console.log("Listo para Mandar mails");
-          // });
-
-          // const info = await transporter.sendMail({
-          //   from: '"no-reply" <jose.flores1087@gmail.com , albertojoseponce@gmail.com>', // sender address
-          //   to: "jose.flores1087@gmail.com, albertojoseponce@gmail.com,ehessler@fondomisiones.com.ar", // list of receivers
-          //   // Cco:"",
-          //   subject: "Hello ✔", // Subject line
-          //   text: "Hello world?", // plain text body
-          //   html: "<b>Bienvienidos! Su cuenta se creo correctamente y posteriormente será validada por el FCM!<br>", // html body
-          // });
-
-          // console.log(info.messageId);
         }
       }
     );
   } catch (error) {}
 };
-//-------------------------------------------------------------------------
-//-------------------------EDITAR PERSONA----------------------------------
-const editUser = async (req, res = response) => {
-  console.log(req.params);
-  console.log(req.body);
-  const { id } = req.params;
-  const { nombre, apellido, dni, revista, mail } = req.body;
-  const usuario = await pool.query(
-    "SELECT * FROM users WHERE id = ?",
-    [id],
-    async (error, results) => {
-      if (error) {
-        console.log(error, "hola");
-        return res.status(400).json(error);
-      } else {
-        const newLink = {
-          nombre, 
-          apellido, 
-          dni, 
-          revista, 
-          mail,
-      };
-      const user = await pool.query('UPDATE users SET ? WHERE id = ?', [newLink, id]);
-      return res.send(user);
-      }
-      
-    }
-  );
-};
-
 //-----------------------------------------------------------
 //----------------------------DELETE PERSONA-------------------------
 const deleteUser = async (req, res = response) => {
-  const {id} = req.params
+  //const {id} = req.params
   try {
-   usuarios = await pool.query ("SELECT * FROM users WHERE id =?",[id]);
+    usuarios = await pool.query("SELECT * FROM users WHERE id =?", [id]);
   } catch (e) {
     res.status(404).json({ message: 'Somenthing goes wrong!' });
   }
   if (usuarios.length > 0) {
-    usuarios = await pool.query ("UPDATE users SET estado ='B' WHERE id =?",[id]);
-    res.send(usuarios);
-   
+    usuarios = await pool.query("UPDATE user SET estado ='B' WHERE id =?", [id]);
+    res.send.json({
+      msj: 'Hola',
+      usuarios
+    });
+
   } else {
     res.status(404).json({ message: 'Not result' });
   }
-}
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-const hola = async (req, res= response)=>{
-  const {id}= req.params;
-  const password = 'nueveonce';
-  //Encriptar Password
-  let salt = await bcryptjs.genSalt();
-  let  passwordhash = await  bcryptjs.hash(password, salt);
-  console.log(id); 
-      try {
-        users = await pool.query ("SELECT * FROM users WHERE id =?",[id]);
-      } catch (e) {
-        res.status(404).json({ message: 'Somenthing goes wrong!' });
-      }
-      if (users.length > 0) {
-        users = await pool.query ("UPDATE users SET pass= ? WHERE id =?",[passwordhash, id]);
-        res.send(users);
-      
-      } else {
-        res.status(404).json({ message: 'Not result' });
-      }
 }
 //-----------------------------------------------------------
 //----------------------------RECUPERAR CUENTA-------------------------
 const changePaass = async (req, res = response) => {
   // const {id}= req.params;
   console.log('id');
-
-   
- 
-
-
-
   //  try {
   //    const usuario = await pool.query(
   //      "SELECT * FROM users WHERE id = ?",
@@ -260,11 +153,8 @@ const changePaass = async (req, res = response) => {
 };
 
 module.exports = {
-  usersGet,
-  getById,
+  GetUser,
+  NewUser,
   changePaass,
-  hola,
-  newUsers,
-  editUser,
   deleteUser
 };

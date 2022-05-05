@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
+const { database } = require("../database/key");
 const myconn = require("express-myconnection");
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser")
+const path = require("path");
 
 class Server {
   constructor() {
@@ -10,34 +12,41 @@ class Server {
     this.app.use(cors());
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
-    //Middlewares
 
+    //Middlewares
+    this.middlewares();
     //Rutas | Endpoints
     this.routes();
   }
 
   middlewares() {
-    //CORS
-    this.app.use(cors());
 
-    //DIRECTORIO PUBLICO
-    this.app.use(express.static("public/img/informes"));
+    // this.app.use(passport.initialize());
+    // this.app.use(passport.session());
+    //this.app.use(cookieParser());
+    this.app.use(express.static('public/img/informes'));
 
     //Body Parser
     this.app.use(bodyParser.urlencoded({ extended: true }));
     this.app.use(bodyParser.json());
 
+    //CORS
+
     //Lectura y Parseo
     this.app.use(express.json());
+    this.app.use(function (req, res, next) {
+      //this.app.locals = req.user;
+      next();
+    });
 
-     //bd
-     this.app.use(myconn(mysql, database, "pool"));
+    //bd
+    this.app.use(myconn(mysql, database, "pool"));
+
+    //directorio publico
+    this.app.use(express.static('public'));
   }
 
   routes() {
-    this.app.get("/", (req, res) => {
-      res.send("Holiis");
-    });
 
     this.app.use("/api/auth", require("../routes/auth"));
     this.app.use("/api/cliente", require("../routes/cliente"));
