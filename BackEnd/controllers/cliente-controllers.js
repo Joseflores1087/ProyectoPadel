@@ -24,22 +24,6 @@ const GetCliente = async (req = request, res = response) => {
   }
 };
 
-//-------------------------------------------------------
-//GET by ID----------------------------------------------------
-const getById = async (req = request, res = response) => {
-  try {
-    users = await pool.query("SELECT * FROM users WHERE id = ?", [id]);
-  } catch (e) {
-    res.status(404).json({ message: "Somenthing goes wrong!" });
-  }
-  if (users.length > 0) {
-    res.send(users);
-  } else {
-    res.status(404).json({
-      message: "Not result",
-    });
-  }
-};
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
 const NewCliente = async (req, res = response) => {
@@ -97,33 +81,52 @@ const NewCliente = async (req, res = response) => {
 };
 //-------------------------------------------------------------------------
 //-------------------------EDITAR PERSONA----------------------------------
-const editUser = async (req, res = response) => {
-  console.log(req.body);
+const EditCliente = async (req, res = response) => {
+  console.log(req.params);
   const { id } = req.params;
-  const { nombre, apellido, dni, revista, mail } = req.body;
-  const usuario = await pool.query(
-    "SELECT * FROM users WHERE id = ?",
-    [id],
-    async (error, results) => {
-      if (error) {
-        console.log(error, "hola");
-        return res.status(400).json(error);
-      } else {
-        const newLink = {
-          nombre,
-          apellido,
-          dni,
-          revista,
-          mail,
-        };
-        const user = await pool.query("UPDATE users SET ? WHERE id = ?", [
-          newLink,
-          id,
-        ]);
-        return res.send(user);
-      }
-    }
-  );
+   const {
+     nombre,
+     apellido,
+     dni,
+     f_nacimiento,
+     email,
+     sexo,
+     n_celular,
+     foto_perfil,
+     password,
+   } = req.body;
+   try {
+     const usuario = await pool.query(
+       "SELECT * FROM jugador WHERE id = ?",
+       [id],
+       async (error, results) => {
+         if (error) {
+           console.log(error, "hola");
+           return res.status(400).json(error);
+         } else {
+           const newLink = {
+             nombre,
+             apellido,
+             dni,
+             f_nacimiento,
+             email,
+             sexo,
+             n_celular,
+             foto_perfil,
+             password,
+           };
+           const user = await pool.query("UPDATE jugador SET ? WHERE id = ?", [
+             newLink,
+             id,
+           ]);
+           return res.send(user);
+         }
+       }
+     );
+   } catch (error) {
+    
+   }
+  
 };
 
 //-----------------------------------------------------------
@@ -144,30 +147,7 @@ const deleteUser = async (req, res = response) => {
     res.status(404).json({ message: "Not result" });
   }
 };
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-const hola = async (req, res = response) => {
-  const { id } = req.params;
-  const password = "nueveonce";
-  //Encriptar Password
-  let salt = await bcryptjs.genSalt();
-  let passwordhash = await bcryptjs.hash(password, salt);
-  console.log(id);
-  try {
-    users = await pool.query("SELECT * FROM users WHERE id =?", [id]);
-  } catch (e) {
-    res.status(404).json({ message: "Somenthing goes wrong!" });
-  }
-  if (users.length > 0) {
-    users = await pool.query("UPDATE users SET pass= ? WHERE id =?", [
-      passwordhash,
-      id,
-    ]);
-    res.send(users);
-  } else {
-    res.status(404).json({ message: "Not result" });
-  }
-};
+
 //-----------------------------------------------------------
 //----------------------------RECUPERAR CUENTA-------------------------
 const changePaass = async (req, res = response) => {
@@ -232,10 +212,8 @@ const changePaass = async (req, res = response) => {
 
 module.exports = {
   GetCliente,
-  getById,
   changePaass,
-  hola,
   NewCliente,
-  editUser,
+  EditCliente,
   deleteUser,
 };

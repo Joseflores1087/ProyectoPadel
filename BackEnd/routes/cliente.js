@@ -1,6 +1,6 @@
 const { Router } = require('express');
 //const { check } = require('express-validator');
-const { GetCliente, changePaass, NewCliente, editUser, hola,deleteUser, getById } = require ('../controllers/cliente-controllers');
+const { GetCliente, changePaass, NewCliente, EditCliente,deleteUser } = require ('../controllers/cliente-controllers');
 //const { validarJWT } = require('../middlewares/validar-jwt');
 // const { validar_campos } = require('../middlewares/validar-campos');
 // const { validarJWT } = require('../middlewares/validar-jwt');
@@ -13,7 +13,7 @@ router.get('/GetCliente',GetCliente);
 
 router.post('/NewCliente', NewCliente);
 
-router.put('/editUsers/:id', editUser);
+router.post('/EditCliente/:id', EditCliente);
 
 router.put('/changePaass', changePaass );
 
