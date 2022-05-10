@@ -1,12 +1,13 @@
 const { response, request } = require("express");
 const pool = require("../database/database");
 const bcryptjs = require("bcryptjs");
+const {validationResult} = require("express-validator");
 // const fetch = require("node-fetch");
 // const nodemailer = require("nodemailer");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
-const GetCliente = async (req = request, res = response) => {
+const GetCliente = async (req, res = response) => {
   try {
     const cliente = await pool.query(
       "SELECT * FROM jugador WHERE estado = 'A'"
@@ -27,6 +28,12 @@ const GetCliente = async (req = request, res = response) => {
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
 const NewCliente = async (req, res = response) => {
+const errors = validationResult(req);
+if(!errors.isEmpty()){
+  return res.status(400).json(errors);
+}
+
+
   console.log(req.body);
   const {
     nombre,
@@ -77,56 +84,56 @@ const NewCliente = async (req, res = response) => {
         }
       }
     );
-  } catch (error) {}
+  } catch (error) { }
 };
 //-------------------------------------------------------------------------
 //-------------------------EDITAR PERSONA----------------------------------
 const EditCliente = async (req, res = response) => {
   console.log(req.params);
   const { id } = req.params;
-   const {
-     nombre,
-     apellido,
-     dni,
-     f_nacimiento,
-     email,
-     sexo,
-     n_celular,
-     foto_perfil,
-     password,
-   } = req.body;
-   try {
-     const usuario = await pool.query(
-       "SELECT * FROM jugador WHERE id = ?",
-       [id],
-       async (error, results) => {
-         if (error) {
-           console.log(error, "hola");
-           return res.status(400).json(error);
-         } else {
-           const newLink = {
-             nombre,
-             apellido,
-             dni,
-             f_nacimiento,
-             email,
-             sexo,
-             n_celular,
-             foto_perfil,
-             password,
-           };
-           const user = await pool.query("UPDATE jugador SET ? WHERE id = ?", [
-             newLink,
-             id,
-           ]);
-           return res.send(user);
-         }
-       }
-     );
-   } catch (error) {
-    
-   }
-  
+  const {
+    nombre,
+    apellido,
+    dni,
+    f_nacimiento,
+    email,
+    sexo,
+    n_celular,
+    foto_perfil,
+    password,
+  } = req.body;
+  try {
+    const usuario = await pool.query(
+      "SELECT * FROM jugador WHERE id = ?",
+      [id],
+      async (error, results) => {
+        if (error) {
+          console.log(error, "hola");
+          return res.status(400).json(error);
+        } else {
+          const newLink = {
+            nombre,
+            apellido,
+            dni,
+            f_nacimiento,
+            email,
+            sexo,
+            n_celular,
+            foto_perfil,
+            password,
+          };
+          const user = await pool.query("UPDATE jugador SET ? WHERE id = ?", [
+            newLink,
+            id,
+          ]);
+          return res.send(user);
+        }
+      }
+    );
+  } catch (error) {
+
+  }
+
 };
 
 //-----------------------------------------------------------
