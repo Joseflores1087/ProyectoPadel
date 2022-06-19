@@ -1,0 +1,35 @@
+.body{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    background-color: rgb(248, 231, 231);
+}
+
+.login{
+    max-width: 330px;
+    text-align: center;
+}
+
+.ancho{
+    width: 80%;
+}
+
+.card{
+    box-shadow: 3px;
+}
+.ingresar{
+    background-color: #ff6936;
+    /* background-color: #3C75F1; */
+    color: white;
+}
+
+.registrarse{
+    background-color: #ff6936;
+    color: white;
+}
+
+.spinner{
+    margin: auto;
+}
+

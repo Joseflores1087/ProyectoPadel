@@ -1,0 +1,22 @@
+[
+    {
+        "nombre":"Inicio",
+        "redirect":"#"
+    },
+    {
+        "nombre":"Usuarios",
+        "redirect":"#"
+    },
+    {
+        "nombre":"Informes",
+        "redirect":"#"
+    },
+    {
+        "nombre":"Cámaras",
+        "redirect":"#"
+    },
+    {
+        "nombre":"Carga Dominios",
+        "redirect":"#"
+    }
+  ]

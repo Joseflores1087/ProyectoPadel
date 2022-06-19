@@ -2,8 +2,7 @@ const { response, request } = require("express");
 const pool = require("../database/database");
 const bcryptjs = require("bcryptjs");
 const {validationResult} = require("express-validator");
-// const fetch = require("node-fetch");
-// const nodemailer = require("nodemailer");
+
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
@@ -138,7 +137,7 @@ const EditCliente = async (req, res = response) => {
 
 //-----------------------------------------------------------
 //----------------------------DELETE PERSONA-------------------------
-const deleteUser = async (req, res = response) => {
+const DeleteCliente = async (req, res = response) => {
   const { id } = req.params;
   try {
     usuarios = await pool.query("SELECT * FROM users WHERE id =?", [id]);
@@ -157,7 +156,7 @@ const deleteUser = async (req, res = response) => {
 
 //-----------------------------------------------------------
 //----------------------------RECUPERAR CUENTA-------------------------
-const changePaass = async (req, res = response) => {
+const ChangePaass = async (req, res = response) => {
   // const {id}= req.params;
   console.log("id");
 
@@ -219,8 +218,8 @@ const changePaass = async (req, res = response) => {
 
 module.exports = {
   GetCliente,
-  changePaass,
   NewCliente,
   EditCliente,
-  deleteUser,
+  DeleteCliente,
+  ChangePaass
 };

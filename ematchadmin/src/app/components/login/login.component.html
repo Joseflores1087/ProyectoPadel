@@ -1,0 +1,26 @@
+<div class="body">
+  <div class="position-absolute top-50 start-50 translate-middle">
+    <div class="card" style="width: 18rem; margin-top: 1rem;">
+      <img src="../../../assets/img/logologin2.png" class="" style="margin-top: 1rem" alt="">
+      <div class="card-body">
+        <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+            <input type="text" class="form-control" placeholder="Usuario" formControlName="correo" aria-label="Username"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
+            <input type="text" class="form-control" placeholder="Password" formControlName="password"
+              aria-describedby="basic-addon1">
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn ingresar" [disabled]="form.invalid">Ingresar</button>
+            <!-- <button class="btn registrarse" type="button">Registrarse</button> -->
+          </div>
+          <!-- <button type="button" class="btn btn-primary btn-lg">Ingresar</button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

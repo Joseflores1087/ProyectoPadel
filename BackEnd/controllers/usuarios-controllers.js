@@ -21,9 +21,11 @@ const GetUser = async (req = request, res = response) => {
     console.log('Exito');
   }
 };
+//----------------------------------------------------------------
+//----------------------------END GET USER-------------------------
 
-//-----------------------------------------------------------
-//----------------------------GRABAR PERSONA-------------------------
+//----------------------------------------------------------------
+//----------------------------GRABAR USER-------------------------
 const NewUser = async (req, res = response) => {
   console.log(req.body);
   const { nombre, apellido, dni, celular, correo, password } = req.body;
@@ -72,8 +74,19 @@ const NewUser = async (req, res = response) => {
   } catch (error) {}
 };
 //-----------------------------------------------------------
-//----------------------------DELETE PERSONA-------------------------
-const deleteUser = async (req, res = response) => {
+//----------------------------END NEW USER-------------------------
+
+//-----------------------------------------------------------
+//----------------------------EDIT USER-------------------------
+const EditUser = async (req, res = response) => {
+
+}
+//-----------------------------------------------------------
+//----------------------------END EDIT USER-------------------------
+
+//-----------------------------------------------------------
+//----------------------------DELETE USER-------------------------
+const DeleteUser = async (req, res = response) => {
   //const {id} = req.params
   try {
     usuarios = await pool.query("SELECT * FROM users WHERE id =?", [id]);
@@ -91,6 +104,9 @@ const deleteUser = async (req, res = response) => {
     res.status(404).json({ message: 'Not result' });
   }
 }
+//-----------------------------------------------------------
+//----------------------------END DELETE USER-------------------------
+
 //-----------------------------------------------------------
 //----------------------------RECUPERAR CUENTA-------------------------
 const changePaass = async (req, res = response) => {
@@ -156,10 +172,14 @@ const changePaass = async (req, res = response) => {
   //   );
   //  } catch (error) {}
 };
+//-----------------------------------------------------------
+//----------------------------END RECUPERAR PASSWORD-------------------------
 
 module.exports = {
   GetUser,
   NewUser,
-  changePaass,
-  deleteUser
+  EditUser,
+  DeleteUser,
+  changePaass
+  
 };

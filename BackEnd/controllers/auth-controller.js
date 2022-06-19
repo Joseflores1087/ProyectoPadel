@@ -2,17 +2,17 @@ const { response, request, json } = require("express");
 const bcryptjs = require("bcryptjs");
 const pool = require("../database/database");
 const { generarJWT } = require("../helpers/generar-jwt");
-const { body } = require("express-validator");
-const passport = require('passport');
+// const { body } = require("express-validator");
+// const passport = require('passport');
 
 const login = async (req = request, res = response, done) => {
   console.log(req.body, "Exito");
-  const { revista, password } = req.body;
+  const { correo, password } = req.body;
   // const {password  = req.body.password;
   try {
     const usuario = pool.query(
-      "SELECT * FROM users WHERE revista = ?",
-      [revista],
+      "SELECT * FROM user WHERE correo = ?",
+      [correo],
       async (error, results) => {
         if (error) {
           console.log(error, "Error micheti");
@@ -42,7 +42,7 @@ const login = async (req = request, res = response, done) => {
           // }
           // ----------------------------------------------
           // ------------Verificar password----------------
-          const validPassword = bcryptjs.compareSync(password, results[0].pass);
+          const validPassword = bcryptjs.compareSync(password, results[0].password);
           if (!validPassword) {
             return res.json({
               ok: false,
@@ -89,14 +89,7 @@ const getInicio = async (req = request, res = response) => {
   console.log(req.session.id);
 };
 
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
 
-passport.deserializeUser(async (id, done) => {
-  const rows = await pool.query('SELECT * FROM users WHERE id = ?', [id]);
-  done(null, rows[0]);
-});
 
 module.exports = {
   login,

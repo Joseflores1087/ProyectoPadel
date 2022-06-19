@@ -3,6 +3,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 const { database } = require("../database/key");
 const myconn = require("express-myconnection");
+const path = require("path");
 
 const bodyParser = require('body-parser')
 
@@ -23,7 +24,7 @@ this.middlewares();
     // this.app.use(passport.initialize());
     // this.app.use(passport.session());
     //this.app.use(cookieParser());
-    this.app.use(express.static('public/img/informes'));
+    this.app.use(express.static('public/img'));
 
     //Body Parser
     this.app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,6 +51,7 @@ this.middlewares();
     this.app.use("/api/auth", require("../routes/auth"));
     this.app.use("/api/cliente", require("../routes/cliente"));
     this.app.use("/api/usuario", require("../routes/usuario"));
+    this.app.use("/api/cancha", require("../routes/cancha"));
   }
 
   listen() {
