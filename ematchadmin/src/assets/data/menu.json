@@ -1,9 +1,5 @@
 [
     {
-        "nombre":"Inicio",
-        "redirect":"#"
-    },
-    {
         "nombre":"Usuarios",
         "redirect":"#"
     },
