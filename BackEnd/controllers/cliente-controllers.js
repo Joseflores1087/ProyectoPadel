@@ -6,13 +6,13 @@ const {validationResult} = require("express-validator");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
-const GetCliente = async (req, res = response) => {
+const GetJugador = async (req, res = response) => {
   try {
-    const cliente = await pool.query(
+    const jugador = await pool.query(
       "SELECT * FROM jugador WHERE estado = 'A'"
     );
-    if (cliente.length > 0) {
-      res.send(cliente);
+    if (jugador.length > 0) {
+      res.send(jugador);
     } else {
       res.send("No existen Usuarios");
       res.status(404).json({
@@ -26,7 +26,7 @@ const GetCliente = async (req, res = response) => {
 
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
-const NewCliente = async (req, res = response) => {
+const NewJugador = async (req, res = response) => {
 const errors = validationResult(req);
 if(!errors.isEmpty()){
   return res.status(400).json(errors);
@@ -87,7 +87,7 @@ if(!errors.isEmpty()){
 };
 //-------------------------------------------------------------------------
 //-------------------------EDITAR PERSONA----------------------------------
-const EditCliente = async (req, res = response) => {
+const EditJugador = async (req, res = response) => {
   console.log(req.params);
   const { id } = req.params;
   const {
@@ -137,7 +137,7 @@ const EditCliente = async (req, res = response) => {
 
 //-----------------------------------------------------------
 //----------------------------DELETE PERSONA-------------------------
-const DeleteCliente = async (req, res = response) => {
+const DeleteJugador = async (req, res = response) => {
   const { id } = req.params;
   try {
     usuarios = await pool.query("SELECT * FROM users WHERE id =?", [id]);
@@ -217,9 +217,9 @@ const ChangePaass = async (req, res = response) => {
 };
 
 module.exports = {
-  GetCliente,
-  NewCliente,
-  EditCliente,
-  DeleteCliente,
+  GetJugador,
+  NewJugador,
+  EditJugador,
+  DeleteJugador,
   ChangePaass
 };

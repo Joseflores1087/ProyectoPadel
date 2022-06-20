@@ -49,7 +49,7 @@ this.middlewares();
   routes() {
 
     this.app.use("/api/auth", require("../routes/auth"));
-    this.app.use("/api/cliente", require("../routes/cliente"));
+    this.app.use("/api/jugador", require("../routes/jugador"));
     this.app.use("/api/usuario", require("../routes/usuario"));
     this.app.use("/api/cancha", require("../routes/cancha"));
   }
