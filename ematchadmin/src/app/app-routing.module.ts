@@ -8,10 +8,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./components/dashboard/dashboard.module').then(
-        (x) => x.DashboardModule
-      ),
-    
+      import('./components/dashboard/dashboard.module').then((x) => x.DashboardModule)
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
