@@ -1,11 +1,11 @@
 [
     {
         "nombre":"Usuarios",
-        "redirect":"#"
+        "redirect":"/dashboard/usuarios"
     },
     {
-        "nombre":"Informes",
-        "redirect":"#"
+        "nombre":"Canchas",
+        "redirect":"/dashboard/canchas"
     },
     {
         "nombre":"Cámaras",

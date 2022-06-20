@@ -7,18 +7,26 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard.component';
 
+/**
+ * Modulos
+ */
+import { UsersModule } from './users/users.module';
+import { CanchaModule } from './cancha/cancha.module';
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-
+    UsersModule,
+    CanchaModule
   ],
   exports: [SharedModule],
 })
