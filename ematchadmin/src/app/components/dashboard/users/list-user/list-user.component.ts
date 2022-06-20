@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
-import 'rxjs/add/operator/map'
 
 @Component({
   selector: 'app-list-user',
