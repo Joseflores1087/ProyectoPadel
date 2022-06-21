@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataTablesModule } from "angular-datatables";
 
 import { CanchaRoutingModule } from './cancha-routing.module';
 import { ListCanchaComponent } from './list-cancha/list-cancha.component';
 import { NewCanchaComponent } from './new-cancha/new-cancha.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +12,7 @@ import { NewCanchaComponent } from './new-cancha/new-cancha.component';
   imports: [
     CommonModule,
     CanchaRoutingModule,
-    DataTablesModule
+    SharedModule
   ]
 })
 export class CanchaModule { }

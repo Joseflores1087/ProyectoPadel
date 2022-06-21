@@ -12,6 +12,9 @@ import { DashboardComponent } from './dashboard.component';
  */
 import { UsersModule } from './users/users.module';
 import { CanchaModule } from './cancha/cancha.module';
+import { HorariosModule } from './horarios/horarios.module';
+import { TurnosModule } from './turnos/turnos.module';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -19,6 +22,8 @@ import { CanchaModule } from './cancha/cancha.module';
     DashboardComponent,
     HomeComponent,
     NavbarComponent,
+    FooterComponent,
+  
 
   ],
   imports: [
@@ -26,7 +31,9 @@ import { CanchaModule } from './cancha/cancha.module';
     DashboardRoutingModule,
     SharedModule,
     UsersModule,
-    CanchaModule
+    CanchaModule,
+    HorariosModule,
+    TurnosModule
   ],
   exports: [SharedModule],
 })

@@ -14,11 +14,12 @@ const GetCancha = async (req, res = response) => {
         res.status(404).json({ message: "Somenthing goes wrong!" });
     }
     if (cancha.length > 0) {
-        res.send(cancha);
+        return res.send(cancha);
     } else {
-        res.status(404).json({
-            message: "No existen Canchas"
-        });
+        return res.send(cancha);
+        // res.status(404).json({
+        //     message: "No existen Canchas"
+        // });
     }
 };
 

@@ -1,0 +1,62 @@
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header pb-0">
+                    <p class="text-uppercase text-sm">INFORMACIÓN DEL USUARIO </p>
+                </div>
+                <div class="card-body">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Nombre</label>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Apellido</label>
+                                    <input class="form-control" type="email" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">DNI</label>
+                                    <input class="form-control" type="number" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Teléfono</label>
+                                    <input class="form-control" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleDataList" class="form-label">Cancha</label>
+                                    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="">
+                                    <datalist id="datalistOptions" *ngFor="let c of canchas">
+                                      <option value="{{c.nombre_cancha}}">
+                                      <!-- <option value="Drop">
+                                      <option value="Arena">
+                                      <option value="x3"> -->
+                                      
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <hr class="horizontal dark">
+                    <!-- <p class="text-uppercase text-sm">INFORMACIÓN DE LA CANCHA</p>-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" type="submit" style="margin-right: 1rem;">Guardar</button>
+                            <button class="btn btn-secondary" routerLink="/dashboard/usuarios">Atras</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
