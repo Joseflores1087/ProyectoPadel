@@ -24,21 +24,21 @@ const routes: Routes = [
             (x) => x.CanchaModule
           ),
       },
-      
-      // {
-      //   path: 'camaras',
-      //   loadChildren: () =>
-      //     import('./camaras/camaras.module').then(
-      //       (x) => x.CamarasModule
-      //     ),
-      // },
-      // {
-      //   path: 'dominio',
-      //   loadChildren: () =>
-      //     import('./dominio/dominio.module').then(
-      //       (x) => x.DominioModule
-      //     ),
-      // }, 
+      {
+        path: 'turnos',
+        loadChildren: () =>
+          import('./turnos/turnos.module').then(
+            (x) => x.TurnosModule
+          ),
+      }, 
+      {
+        path: 'horarios',
+        loadChildren: () =>
+          import('./horarios/horarios.module').then(
+            (x) => x.HorariosModule
+          ),
+      },
+    
      
       // {
       //   path: 'informe',

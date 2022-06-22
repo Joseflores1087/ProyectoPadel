@@ -8,11 +8,11 @@
         "redirect":"/dashboard/canchas"
     },
     {
-        "nombre":"Cámaras",
-        "redirect":"#"
+        "nombre":"Turnos",
+        "redirect":"/dashboard/turnos"
     },
     {
-        "nombre":"Carga Dominios",
-        "redirect":"#"
+        "nombre":"Horarios",
+        "redirect":"/dashboard/horarios"
     }
   ]

@@ -28,7 +28,7 @@ const GetUser = async (req = request, res = response) => {
 //----------------------------GRABAR USER-------------------------
 const NewUser = async (req, res = response) => {
   console.log(req.body);
-  const { nombre, apellido, dni, celular, correo, password } = req.body;
+  const { nombre, apellido, dni, celular, correo, id_rol , id_cancha,password } = req.body;
 
   try {
     const usuario = await pool.query(
@@ -53,8 +53,8 @@ const NewUser = async (req, res = response) => {
             let  passwordhash = await  bcryptjs.hash(password, salt);
              //console.log(passwordhash);
             //Query
-       let myQuery = `INSERT INTO user( nombre, apellido, dni,celular,correo, password) 
-             VALUES ( '${nombre}','${apellido}','${dni}','${celular}','${correo}','${passwordhash}')`;
+       let myQuery = `INSERT INTO user( nombre, apellido, dni,celular,correo,id_rol , id_cancha, password) 
+             VALUES ( '${nombre}','${apellido}','${dni}','${celular}','${correo}','${id_rol}', '${id_cancha}', '${passwordhash}')`;
              pool.query(myQuery, (error, results) => {
               if (error) {
                 return res.status(400).json(error);
@@ -106,6 +106,25 @@ const DeleteUser = async (req, res = response) => {
 }
 //-----------------------------------------------------------
 //----------------------------END DELETE USER-------------------------
+
+//-----------------------------------------------------------
+//----------------------------TRAER ROLES-------------------------
+const GetRol = async (req = request, res = response) => {
+  try {
+    roles = await pool.query("SELECT * FROM roles_dash WHERE estado = 'A'");
+  } catch (e) {
+    res.status(404).json({ message: 'Somenthing goes wrong!' });
+  }
+  if (roles.length > 0) {
+    return res.send(roles);
+  }
+  else {
+    res.send('No existen Usuarios cargados');
+    console.log('Exito');
+  }
+};
+//-----------------------------------------------------------
+//----------------------------END TRAER ROLES-------------------------
 
 //-----------------------------------------------------------
 //----------------------------RECUPERAR CUENTA-------------------------
@@ -180,6 +199,7 @@ module.exports = {
   NewUser,
   EditUser,
   DeleteUser,
-  changePaass
+  changePaass,
+  GetRol
   
 };
