@@ -6,7 +6,7 @@ const { validationResult } = require("express-validator");
 //-------------------------------------------------------
 //GET----------------------------------------------------
 const GetCancha = async (req, res = response) => {
-    console.log('hola cancha');
+   
     try {
         cancha = await pool.query("SELECT * FROM cancha WHERE estado = 'A'")
 

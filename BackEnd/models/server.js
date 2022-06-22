@@ -4,8 +4,8 @@ const mysql = require("mysql");
 const { database } = require("../database/key");
 const myconn = require("express-myconnection");
 const path = require("path");
-
-const bodyParser = require('body-parser')
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
 
 class Server {
   constructor() {
@@ -14,17 +14,17 @@ class Server {
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
     //Middlewares
-this.middlewares();
+    this.middlewares();
     //Rutas | Endpoints
     this.routes();
   }
 
   middlewares() {
-
+    this.app.use(morgan("dev"));
     // this.app.use(passport.initialize());
     // this.app.use(passport.session());
     //this.app.use(cookieParser());
-    this.app.use(express.static('public/img'));
+    this.app.use(express.static("public/img"));
 
     //Body Parser
     this.app.use(bodyParser.urlencoded({ extended: true }));
@@ -43,11 +43,10 @@ this.middlewares();
     this.app.use(myconn(mysql, database, "pool"));
 
     //directorio publico
-    this.app.use(express.static('public'));
+    this.app.use(express.static("public"));
   }
 
   routes() {
-
     this.app.use("/api/auth", require("../routes/auth"));
     this.app.use("/api/cliente", require("../routes/cliente"));
     this.app.use("/api/usuario", require("../routes/usuario"));

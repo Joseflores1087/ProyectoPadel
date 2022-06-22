@@ -14,4 +14,12 @@ export class UserService {
   GetUser() {
     return this.http.get(`${this.url}/api/usuario/GetUser`);
   }
+
+  AddUser(UserData:any){
+    return this.http.post(`${this.url}/api/usuario/NewUser`, UserData);
+  }
+
+  GetRol(){
+    return this.http.get(`${this.url}/api/usuario/GetRol`);
+  }
 }

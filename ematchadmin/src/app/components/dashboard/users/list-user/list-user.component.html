@@ -11,16 +11,18 @@
         <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>First name</th>
-              <th>Last name</th>
+              <th>Nombre</th>
+              <th>DNI</th>
+              <th>MAIL</th>
+              <th>PROPIETARIO DE</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let u of data">
-              <td>{{u.apellido}}</td>
+              <td>{{u.nombre}} {{u.apellido}}</td>
               <td>{{u.dni}}</td>
               <td>{{u.correo}}</td>
+              <td>{{u.id_cancha}}</td>
             </tr>
          
           </tbody>
