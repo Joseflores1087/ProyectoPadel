@@ -13,4 +13,8 @@ export class CanchasService {
   GetCancha(){
     return this.http.get(`${this.url}/api/cancha/GetCancha`);
   }
+
+  NewCancha(CanchaData:any){
+    return this.http.post(`${this.url}/api/cancha/NewCancha`, CanchaData);
+  }
 }

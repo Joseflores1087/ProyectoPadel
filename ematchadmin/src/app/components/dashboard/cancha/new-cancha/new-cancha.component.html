@@ -7,55 +7,64 @@
                 <div class="card-body">
                     <p class="text-uppercase text-sm">INFORMACIÓN DE LA CANCHA</p>
 
-                    <form action="">
+                    <form [formGroup]="form" (ngSubmit)="newCancha()" action="" action="">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Nombre de la Cancha</label>
-                                    <input class="form-control" type="text" value="">
+                                    <input class="form-control" formControlName="nombre_cancha" type="text" value="">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Dirección</label>
-                                    <input class="form-control" type="text" value="">
+                                    <input class="form-control" formControlName="direccion" type="text" value="">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">CP</label>
-                                    <input class="form-control" type="email" value="">
+                                    <input class="form-control" formControlName="codigo_postal" type="number" value="">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Teléfono</label>
-                                    <input class="form-control" type="text" value="">
+                                    <input class="form-control" formControlName="telefono" type="text" value="">
                                 </div>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Cantidad de
                                         canchas</label>
-                                    <input class="form-control" type="number" value="">
+                                    <input class="form-control" formControlName="cantidad_canchas" type="number" value="">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                  <label for="responsableDatalist" class="form-label">Resposable</label>
+                                  <select formControlName="id_user" class="form-select" id="responsable" required>
+                                    <option selected disabled value="">Seleccionar Responsable</option>
+                                    <option *ngFor="let u of data" value="{{u.id}}"> {{ u.nombre}} {{u.apellido}}</option>
+                                  </select>     
+                                </div>
+                              </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Logo</label>
-                                    <input class="form-control" type="file" value="Lucky">
+                                    <input class="form-control" formControlName="logo" type="file" value="Lucky">
                                 </div>
                             </div>
                         </div>
+                        <hr class="horizontal dark">
+                        <!-- <p class="text-uppercase text-sm">INFORMACIÓN DE LA CANCHA</p>-->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" type="submit" style="margin-right: 1rem;">Guardar</button>
+                                <button class="btn btn-secondary" routerLink="/dashboard/canchas">Atras</button>
+                            </div>
+                        </div> 
                     </form>
-                    <hr class="horizontal dark">
-                    <!-- <p class="text-uppercase text-sm">INFORMACIÓN DE LA CANCHA</p>-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button class="btn btn-primary" type="submit" style="margin-right: 1rem;">Guardar</button>
-                            <button class="btn btn-secondary" routerLink="/dashboard/canchas">Atras</button>
-                        </div>
-                    </div> 
                 </div>
             </div>
         </div>

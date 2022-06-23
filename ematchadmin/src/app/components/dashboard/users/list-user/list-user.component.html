@@ -10,11 +10,12 @@
       <div class="card-body">
         <table datatable  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
           <thead>
-            <tr>
+            <tr >
               <th>Nombre</th>
               <th>DNI</th>
               <th>MAIL</th>
-              <th>PROPIETARIO DE</th>
+              <th style="text-align:center">PROPIETARIO DE</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -22,7 +23,11 @@
               <td>{{u.nombre}} {{u.apellido}}</td>
               <td>{{u.dni}}</td>
               <td>{{u.correo}}</td>
-              <td>{{u.id_cancha}}</td>
+              <td style="text-align:center;"><a href=""><i style="color: chocolate;" class="fas fa-eye"></i></a>{{u.id_cancha}}</td>
+              <td> 
+                <button class="btn btn-primary" style="color:white; margin-right: 1rem;"><span><i style="color:white" class="fa fa-pen"></i></span></button>
+                <button class="btn btn-danger"><span><i class="fas fa-trash"></i></span></button> 
+              </td>
             </tr>
          
           </tbody>
