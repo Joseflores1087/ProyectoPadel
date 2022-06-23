@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 /**
  * COMPONENTES
  */
@@ -10,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from "angular-datatables";
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { DataTablesModule } from "angular-datatables";
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    SweetAlert2Module
+  
 
   ],
   providers: [],

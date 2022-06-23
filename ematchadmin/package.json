@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@sweetalert2/ngx-sweetalert2": "^11.0.0",
     "angular-datatables": "^13.1.0",
     "bootstrap": "^5.2.0-beta1",
     "datatables.net": "^1.12.1",
@@ -26,6 +27,7 @@
     "datatables.net-dt": "^1.12.1",
     "jquery": "^3.6.0",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.4.18",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
