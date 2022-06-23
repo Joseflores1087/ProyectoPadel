@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-06-2022 a las 11:08:51
+-- Tiempo de generación: 23-06-2022 a las 19:33:52
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.27
 
@@ -29,17 +29,23 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cancha` (
   `id` int(5) NOT NULL,
-  `id_user` int(5) NOT NULL,
+  `id_user` int(20) DEFAULT NULL,
   `nombre_cancha` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL,
   `direccion` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `telefono` int(20) NOT NULL,
+  `telefono` bigint(15) DEFAULT NULL,
   `codigo_postal` int(6) NOT NULL,
-  `cantidad_canchas` int(5) NOT NULL,
-  `horarios_disp` time NOT NULL,
-  `turno_fijo` enum('S','N') COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'N',
+  `cantidad_canchas` bigint(15) NOT NULL,
   `logo` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
   `estado` enum('A','B') COLLATE utf8mb4_spanish_ci NOT NULL DEFAULT 'A'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cancha`
+--
+
+INSERT INTO `cancha` (`id`, `id_user`, `nombre_cancha`, `direccion`, `telefono`, `codigo_postal`, `cantidad_canchas`, `logo`, `estado`) VALUES
+(1, 3, 'drop', 'av. uruguay 123', 3764777733, 3300, 3, '', 'A'),
+(4, 3, 'Arenas', 'Av. Quaranta', 3764123456, 3300, 4, 'C:fakepathcentro-integral-de-operaciones-911-policia-de-misiones-591695-10242.png', 'A');
 
 -- --------------------------------------------------------
 
@@ -177,7 +183,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `cancha`
 --
 ALTER TABLE `cancha`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
