@@ -19,6 +19,10 @@ export class UserService {
     return this.http.post(`${this.url}/api/usuario/NewUser`, UserData);
   }
 
+  DeleteUsers(id:number){
+    return this.http.delete(`${this.url}/api/usuario/DeleteUser/${id}`)
+  }
+
   GetRol(){
     return this.http.get(`${this.url}/api/usuario/GetRol`);
   }
