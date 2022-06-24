@@ -1,10 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-<<<<<<< HEAD:BackEnd/routes/jugador.js
-const { GetCliente, ChangePaass, NewCliente, EditCliente,DeleteCliente } = require ('../controllers/jugador-controllers');
-=======
 const { GetJugador, ChangePaass, NewJugador, EditJugador,DeleteJugador } = require ('../controllers/jugador-controllers');
->>>>>>> 56a6f9e046a40f04f6e750470b184e9830ce416a:BackEnd/routes/cliente.js
 
 const router = Router();
 
