@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { GetCliente, ChangePaass, NewCliente, EditCliente,DeleteCliente } = require ('../controllers/cliente-controllers');
+const { GetCliente, ChangePaass, NewCliente, EditCliente,DeleteCliente } = require ('../controllers/jugador-controllers');
 
 const router = Router();
 

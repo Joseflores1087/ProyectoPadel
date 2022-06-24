@@ -2,8 +2,6 @@ const { request, response } = require("express");
 const pool = require("../database/database");
 const bcryptjs = require("bcryptjs");
 
-// const nodemailer = require("nodemailer");
-//const { param } = require("../routes/user");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
@@ -87,22 +85,23 @@ const EditUser = async (req, res = response) => {
 //-----------------------------------------------------------
 //----------------------------DELETE USER-------------------------
 const DeleteUser = async (req, res = response) => {
-  //const {id} = req.params
+  console.log(req.params);
+  const {id} = req.params;
   try {
-    usuarios = await pool.query("SELECT * FROM users WHERE id =?", [id]);
+    users = await pool.query("SELECT * FROM user WHERE id =?", [id]);
   } catch (e) {
     res.status(404).json({ message: 'Somenthing goes wrong!' });
   }
-  if (usuarios.length > 0) {
-    usuarios = await pool.query("UPDATE user SET estado ='B' WHERE id =?", [id]);
-    res.send.json({
-      msj: 'Hola',
-      usuarios
-    });
+   if (users.length > 0) {
+     users = await pool.query("UPDATE user SET estado ='B' WHERE id =?", [id]);
+      res.send({
+        msj: 'ok',
+        users
+      });
 
-  } else {
-    res.status(404).json({ message: 'Not result' });
-  }
+   } else {
+     res.status(404).json({ message: 'Not result' });
+   }
 }
 //-----------------------------------------------------------
 //----------------------------END DELETE USER-------------------------

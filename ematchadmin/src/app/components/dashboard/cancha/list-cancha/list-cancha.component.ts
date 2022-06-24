@@ -28,7 +28,10 @@ export class ListCanchaComponent implements OnInit, OnDestroy {
     });
   }
 
-
+DeleteCancha(cancha:number){
+  console.log(cancha);
+  
+}
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }

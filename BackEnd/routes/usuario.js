@@ -11,7 +11,7 @@ router.post('/NewUser', NewUser);
 
 router.post('/EditUser/:id', EditUser);
 
-router.post('/DeleteUser/:id', DeleteUser);
+router.delete('/DeleteUser/:id', DeleteUser);
 
 router.get('/GetRol',GetRol);
 
