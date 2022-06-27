@@ -58,6 +58,11 @@ export class ListUserComponent implements OnInit, OnDestroy {
     
   }
  
+  EditUser(id:number){
+    console.log(id);
+    
+  }
+
   traerUser(){
     this.user.GetUser().subscribe((res: any) => {
       this.data = res;
