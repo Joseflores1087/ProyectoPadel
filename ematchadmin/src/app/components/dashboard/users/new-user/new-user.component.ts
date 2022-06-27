@@ -13,6 +13,8 @@ export class NewUserComponent implements OnInit {
   form: FormGroup;
   canchas: any;
   rol: any;
+  rolSec: any;
+
   constructor(private fb: FormBuilder,
     private user: UserService,
     private cancha: CanchasService,
@@ -49,7 +51,7 @@ export class NewUserComponent implements OnInit {
       id_rol: this.form.value.id_rol,
       password: this.form.value.password,
     }
-    console.log(formValue)
+    // console.log(formValue)
     this.user.AddUser(formValue).subscribe(res => {
       this.router.navigate(['dashboard/usuarios']);
       console.log('Exito');
@@ -65,7 +67,7 @@ GetCanchas(){
 
   GetRoles() {
     this.user.GetRol().subscribe((res: any) => {
-      console.log(res);
+      console.log(res[0].nombre);
       this.rol = res;
     })
   }

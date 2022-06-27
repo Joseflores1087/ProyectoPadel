@@ -12,6 +12,7 @@ const GetUser = async (req = request, res = response) => {
     res.status(404).json({ message: 'Somenthing goes wrong!' });
   }
   if (users.length > 0) {
+    
     return res.send(users);
   }
   else {
@@ -21,6 +22,42 @@ const GetUser = async (req = request, res = response) => {
 };
 //----------------------------------------------------------------
 //----------------------------END GET USER-------------------------
+const GetUserById = async (req, res = response) => {
+  console.log(req.params);
+  const {id} = req.params;
+  try {
+    users = await pool.query("SELECT * FROM user WHERE id =?", [id]);
+    if (users.length > 0) {
+      return res.send(users);
+   } else {
+     res.status(404).json({ message: 'Not result' });
+   }
+  } catch (e) {
+    res.status(404).json({ message: 'Somenthing goes wrong!' });
+  }
+  
+}
+
+
+
+
+// const GetUserById = async (req = request, res = response) => {
+//   console.log('hola');
+//   const { id } = req.params;
+//   try {
+//     users = await pool.query("SELECT * FROM user WHERE id = ?", [id]);
+//   } catch (e) {
+//     res.status(404).json({ message: 'Somenthing goes wrong!' });
+//   }
+//   if (users.length > 0) {
+//     console.log(users);
+//     return res.send.json(users);
+//   }
+//   else {
+//     res.send('No existen Usuario cargado');
+//     console.log('Exito');
+//   }
+// }
 
 //----------------------------------------------------------------
 //----------------------------GRABAR USER-------------------------
@@ -195,6 +232,7 @@ const changePaass = async (req, res = response) => {
 
 module.exports = {
   GetUser,
+  GetUserById,
   NewUser,
   EditUser,
   DeleteUser,
