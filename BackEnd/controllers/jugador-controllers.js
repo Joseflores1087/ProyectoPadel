@@ -216,10 +216,31 @@ const ChangePaass = async (req, res = response) => {
   //  } catch (error) {}
 };
 
+
+const GetSeguidos = async (req, res = response) =>{
+  const {id} = req.params;
+  console.log(id);
+    try {
+      const seguidor = await pool.query(
+        "SELECT s.id_jugador, j.nombre, j.apellido FROM jugador j INNER JOIN seguidores s ON s.id_jugador = ? AND s.id_seguido = j.id WHERE s.visto = 'SI'",[id]);
+      if (seguidor.length > 0) {
+        res.send(seguidor);
+      } else {
+        res.send("No existen Usuarios");
+        res.status(404).json({
+          message: "Not result",
+        });
+      }
+    } catch (e) {
+      res.status(404).json({ message: "Somenthing goes wrong!" });
+    }
+}
+
 module.exports = {
   GetJugador,
   NewJugador,
   EditJugador,
   DeleteJugador,
-  ChangePaass
+  ChangePaass,
+  GetSeguidos
 };

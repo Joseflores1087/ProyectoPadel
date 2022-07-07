@@ -58,6 +58,27 @@ const GetCancha = async (req, res = response) => {
     }
 };
 
+
+//-------------------------------------------------------
+//GET----------------------------------------------------
+const GetCanchaById = async (req, res = response) => {
+    console.log(req.params);
+   const {id} = req.params;
+    try {
+        cancha = await pool.query("SELECT * FROM cancha WHERE id =?", [id]);
+        if (cancha.length > 0) {
+            return res.send(cancha);
+        } else {
+            res.status(404).json({ message: 'Not result' });
+        }
+    } catch (e) {
+        res.status(404).json({ message: "Somenthing goes wrong!" });
+    }
+    
+};
+//-----------------------------------------------------------
+//----------------------------END------------------
+
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
 const NewCancha = async (req, res = response) => {
@@ -178,6 +199,7 @@ const DeleteCancha = async (req, res = response) => {
 
 module.exports = {
     GetCancha,
+    GetCanchaById,
     NewCancha,
     EditCancha,
     DeleteCancha,

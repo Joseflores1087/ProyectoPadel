@@ -51,6 +51,7 @@ class Server {
     this.app.use("/api/jugador", require("../routes/jugador"));
     this.app.use("/api/usuario", require("../routes/usuario"));
     this.app.use("/api/cancha", require("../routes/cancha"));
+    this.app.use("/api/turnos", require("../routes/turno"));
   }
 
   listen() {

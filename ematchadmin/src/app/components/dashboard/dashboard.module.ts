@@ -15,6 +15,7 @@ import { CanchaModule } from './cancha/cancha.module';
 import { HorariosModule } from './horarios/horarios.module';
 import { TurnosModule } from './turnos/turnos.module';
 import { FooterComponent } from './footer/footer.component';
+import { JugadorModule } from './jugador/jugador.module';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    
   
 
   ],
@@ -33,7 +35,8 @@ import { FooterComponent } from './footer/footer.component';
     UsersModule,
     CanchaModule,
     HorariosModule,
-    TurnosModule
+    TurnosModule,
+    JugadorModule
   ],
   exports: [SharedModule],
 })

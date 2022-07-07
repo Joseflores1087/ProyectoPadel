@@ -1,0 +1,10 @@
+[
+    {
+        "nombre":"Turnos",
+        "redirect":"/dashboard/turnos"
+    },
+    {
+        "nombre":"Jugadores",
+        "redirect":"/dashboard/Jugadores"
+    }
+  ]

@@ -66,6 +66,8 @@ export class ListUserComponent implements OnInit, OnDestroy {
   traerUser(){
     this.user.GetUser().subscribe((res: any) => {
       this.data = res;
+      console.log(this.data);
+      
       this.dtTrigger.next(res);
     });
   }

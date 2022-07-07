@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid py-4">
   <div class="">
     <div class="card" style="width: 100%; margin-top: 1rem;">
       <div class="card-header pb-0">
@@ -23,7 +23,7 @@
               <td>{{u.nombre}} {{u.apellido}}</td>
               <td>{{u.dni}}</td>
               <td>{{u.correo}}</td>
-              <td style="text-align:center;"><a href=""><i style="color: chocolate;" class="fas fa-eye"></i></a>{{u.id_cancha}}</td>
+              <td style="text-align:center;"><a href=""><i style="color: chocolate;" class="fas fa-eye"></i></a></td>
               <td> 
                 <button [routerLink]="['EditUser/', u.id]" class="btn btn-primary" style="color:white; margin-right: 1rem;"><span><i style="color:white" class="fa fa-pen"></i></span></button>
                 <button class="btn btn-danger" (click)="DelteUser(u.id)"><span><i class="fas fa-trash"></i></span></button> 

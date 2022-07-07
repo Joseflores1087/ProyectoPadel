@@ -1,83 +1,105 @@
 <div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-md-6 mt-4">
-          <div class="card">
-            <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Arenas 1</h6>
-            </div>
-            <div class="card-body pt-4 p-3">
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg" style="background-color: red; color: white;">
-                  <div class="d-flex flex-column" >
-                    <h6 class="mb-3 text-sm">20:00HS</h6>
-                    <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2">José Flores</span></span>
-                    <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold">3764772233</span></span>
-                    <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">Si</span></span>
-                  </div>
-                  <div class="ms-auto text-end">
-                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
-                  
-                </div>
-                </li>
-                <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg" style="background-color: green; color: white;">
-                    <div class="d-flex flex-column" >
-                      <h6 class="mb-3 text-sm">22:00HS</h6>
-                      <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2"></span></span>
-                      <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                      <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">NO</span></span>
-                    </div>
-                    <div class="ms-auto text-end">
-                      <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                      <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                      <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
-                    
-                  </div>
-                  </li>
-              </ul>
-            </div>
-          </div>
+  <div class="row">
+    <div class="col-md-6 mt-4"  *ngFor="let c of canchas"> 
+      <div class="card" >
+        <div class="card-header pb-0 px-3">
+          <h6 class="mb-0"></h6>
         </div>
-        <div class="col-md-6 mt-4">
-            <div class="card">
-              <div class="card-header pb-0 px-3">
-                <h6 class="mb-0">Arenas 2</h6>
+        <div class="card-body pt-4 p-3" >
+          <ul class="list-group" *ngFor="let t of Turno" >
+            <li   *ngIf="c.id === t.id_cancha" class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg" style="background-color: rgba(255, 105, 54, .5)
+                ;color: white;">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">{{t.cancha}} - {{t.direccion}}</h6>
+                <h6 class="mb-3 text-sm">{{t.hora_inicio}} - {{t.hora_fin}}</h6>
+                <span class="mb-2 text-xs">Jugador:<span class="text-dark font-weight-bold ms-sm-2"> {{t.nombre}} {{t.apellido}}
+                    </span></span>
+                <span class="mb-2 text-xs">Teléfono:<span
+                    class="text-dark ms-sm-2 font-weight-bold">3764772233</span></span>
+                <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">{{t.turno_fijo}}</span></span>
               </div>
-              <div class="card-body pt-4 p-3">
-                <ul class="list-group">
-                  <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg" style="background-color: red; color: white;">
-                    <div class="d-flex flex-column" >
-                      <h6 class="mb-3 text-sm">20:00HS</h6>
-                      <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2">José Flores</span></span>
-                      <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold">3764772233</span></span>
-                      <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">Si</span></span>
-                    </div>
-                    <div class="ms-auto text-end">
-                      <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                      <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                      <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
-                    
-                  </div>
-                  </li>
-                  <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg" style="background-color: green; color: white;">
-                      <div class="d-flex flex-column" >
-                        <h6 class="mb-3 text-sm">22:00HS</h6>
-                        <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2"></span></span>
-                        <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold"></span></span>
-                        <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">NO</span></span>
-                      </div>
-                      <div class="ms-auto text-end">
-                        <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                        <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
-                      
-                    </div>
-                    </li>
-                </ul>
+              <div class="ms-auto text-end">
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="far fa-trash-alt text-dark me-2" style="color: white;"></i>Delete</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-plus-circle text-dark me-2" aria-hidden="true"></i>New</a>
+
               </div>
-            </div>
-          </div>
-        
+            </li>
+          
+            <!-- <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg"
+              style="background-color: rgba(60, 117, 241, .75); color: white;">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">22:00HS</h6>
+                <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2"></span></span>
+                <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">NO</span></span>
+              </div>
+              <div class="ms-auto text-end">
+                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                    class="far fa-trash-alt me-2"></i>Delete</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
+
+              </div>
+            </li> -->
+          </ul>
+        </div>
       </div>
+    </div>
+    <!-- <div class="col-md-6 mt-4">
+      <div class="card">
+        <div class="card-header pb-0 px-3">
+          <h6 class="mb-0">Arenas 2</h6>
+        </div>
+        <div class="card-body pt-4 p-3">
+          <ul class="list-group">
+            <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg"
+              style="background-color: #FF6936; color: white;">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">20:00HS</h6>
+                <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2">José
+                    Flores</span></span>
+                <span class="mb-2 text-xs">Teléfono: <span
+                    class="text-dark ms-sm-2 font-weight-bold">3764772233</span></span>
+                <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">Si</span></span>
+              </div>
+              <div class="ms-auto text-end">
+                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                    class="far fa-trash-alt me-2"></i>Delete</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
+
+              </div>
+            </li>
+            <li class="list-group-item border-0 d-flex p-4 mb-2 border-radius-lg"
+              style="background-color: #3C75F1; color: white;">
+              <div class="d-flex flex-column">
+                <h6 class="mb-3 text-sm">22:00HS</h6>
+                <span class="mb-2 text-xs">Jugador: <span class="text-dark font-weight-bold ms-sm-2"></span></span>
+                <span class="mb-2 text-xs">Teléfono: <span class="text-dark ms-sm-2 font-weight-bold"></span></span>
+                <span class="text-xs">Turno Fijo: <span class="text-dark ms-sm-2 font-weight-bold">NO</span></span>
+              </div>
+              <div class="ms-auto text-end">
+                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i
+                    class="far fa-trash-alt me-2"></i>Delete</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                    class="fas fa-plus-circle text-primary me-2" aria-hidden="true"></i>New</a>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+
+  </div>
 </div>

@@ -114,6 +114,32 @@ const NewUser = async (req, res = response) => {
 //-----------------------------------------------------------
 //----------------------------EDIT USER-------------------------
 const EditUser = async (req, res = response) => {
+  console.log(req.body);
+  const { id } = req.params;
+  const { nombre, apellido, dni, celular, correo, id_rol , id_cancha} = req.body;
+  const usuario = await pool.query(
+    "SELECT * FROM user WHERE id = ?",
+    [id],
+    async (error, results) => {
+      if (error) {
+        console.log(error, "hola");
+        return res.status(400).json(error);
+      } else {
+        const newLink = {
+          nombre, 
+          apellido, 
+          dni, 
+          celular, 
+          correo, 
+          id_rol , 
+          id_cancha
+        };
+        const user = await pool.query('UPDATE user SET ? WHERE id = ?', [newLink, id]);
+        return res.send(user);
+      }
+
+    }
+  );
 
 }
 //-----------------------------------------------------------

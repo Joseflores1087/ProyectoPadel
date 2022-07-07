@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       { path: '', component: ListCanchaComponent  },
       { path: 'NewCancha', component: NewCanchaComponent  },
-      //{ path: 'NewCancha', component: NewCanchaComponent  },
+      { path: 'EditCancha/:id', component: NewCanchaComponent  },
     ],
   },
 ];

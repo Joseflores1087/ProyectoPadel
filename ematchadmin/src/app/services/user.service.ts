@@ -24,10 +24,10 @@ export class UserService {
   AddUser(UserData:any){
     return this.http.post(`${this.url}/api/usuario/NewUser`, UserData);
   }
+  
   EditUsers(UserData:any, id:number){
-    return this.http.post(`${this.url}/api/usuario/DeleteUser/${id}`, UserData);
+    return this.http.post(`${this.url}/api/usuario/EditUser/${id}`, UserData);
   }
-
 
   DeleteUsers(id:number){
     return this.http.delete(`${this.url}/api/usuario/DeleteUser/${id}`)
