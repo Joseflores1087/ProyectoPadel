@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid py-4">
     <div class="">
         <div class="card" style="width: 100%; margin-top: 1rem;">  
           <div class="card-header pb-0">
@@ -20,7 +20,7 @@
                   <td>DIRECCION</td>
                   <th>CP</th>
                   <th>CANTIDAD CANCHAS</th>
-
+                  <th></th>
 
                 </tr>
               </thead>
@@ -31,7 +31,10 @@
                   <td>{{u.direccion}}</td>
                   <td>{{u.codigo_postal}}</td>
                   <td>{{u.cantidad_canchas}}</td>
-                  
+                  <td> 
+                    <button [routerLink]="['EditCancha/', u.id]" class="btn btn-primary" style="color:white; margin-right: 1rem;"><span><i style="color:white" class="fa fa-pen"></i></span></button>
+                    <button class="btn btn-danger" (click)="DelteCancha(u.id)"><span><i class="fas fa-trash"></i></span></button> 
+                  </td>
                 </tr>
              
               </tbody>

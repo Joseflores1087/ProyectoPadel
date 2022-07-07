@@ -11,7 +11,7 @@ import { MenuService } from 'src/app/services/menu.service';
 export class NavbarComponent implements OnInit {
 
   menu: Menu[] = [];
-
+  rol = localStorage.getItem('user_rol');
   constructor(private _menuService: MenuService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,17 +19,27 @@ export class NavbarComponent implements OnInit {
   }
 
   cargarMenu() {
-    
+    if (this.rol == '1') {
       this._menuService.getMenu().subscribe(data => {
         this.menu = data;
       })
-    
+    }
+    else if (this.rol == '2') {
+      this._menuService.getMenuUser().subscribe(data => {
+        this.menu = data;
+      })
+    } else if (this.rol == '3') {
+      this._menuService.getMenuSuperAdmin().subscribe(data => {
+        this.menu = data;
+      })
+    };
+   
 
   }
 
   logout() {
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('user_rol');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_rol');
     this.router.navigate(['login']);
   }
 

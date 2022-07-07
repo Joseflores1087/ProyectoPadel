@@ -24,7 +24,7 @@ const login = async (req = request, res = response, done) => {
 
           if (!results[0]) {
             return res.status(400).json({
-              msj: "El cuit es incorrecto",
+              msj: "El correo es incorrecto",
             });
           }
           // ----------------------------------------------
@@ -52,7 +52,10 @@ const login = async (req = request, res = response, done) => {
             //si el password es válido
             // ----------------------------------------------
             // ------------Genero JWT------------------------
-            const token = await generarJWT(results[0].id);
+            const token = await generarJWT(results[0].id,results[0].nombre, results[0].id_rol);
+            console.log(results[0].id_rol);
+            const user_rol = results[0].id_rol;
+            const usuario = results[0].id;
             //req.session.user = results[0].id;
             //console.log(req.session.user);
             const user = results[0];
@@ -60,6 +63,8 @@ const login = async (req = request, res = response, done) => {
             return res.json({
               ok: true,
               msj: "Usuario correcto",
+              usuario,
+              user_rol,
               results,
               token,
             });

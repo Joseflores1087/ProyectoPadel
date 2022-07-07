@@ -13,6 +13,6 @@
     },
     {
         "nombre":"Jugadores",
-        "redirect":"/dashboard/jugador"
+        "redirect":"/dashboard/Jugadores"
     }
   ]

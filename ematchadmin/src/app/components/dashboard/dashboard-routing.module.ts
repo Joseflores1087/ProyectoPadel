@@ -38,6 +38,13 @@ const routes: Routes = [
             (x) => x.HorariosModule
           ),
       },
+      {
+        path: 'jugador',
+        loadChildren: () =>
+          import('./jugador/jugador.module').then(
+            (x) => x.JugadorModule
+          ),
+      },
     
      
       // {
