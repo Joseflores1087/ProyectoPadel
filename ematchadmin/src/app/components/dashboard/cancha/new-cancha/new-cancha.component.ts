@@ -76,9 +76,9 @@ export class NewCanchaComponent implements OnInit {
       codigo_postal: this.form.value.codigo_postal,
       cantidad_canchas: this.form.value.cantidad_canchas,
       id_user: this.form.value.id_user,
-      file: this.fileName,
+      file:  this.file,
     }
-    console.log(formValue.file)
+    
     this.canchas.NewCancha(formValue).subscribe(res => {
       this.router.navigate(['/dashboard/canchas']);
       console.log('Exito');
