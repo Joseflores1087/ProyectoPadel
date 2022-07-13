@@ -7,7 +7,7 @@ const router = Router ();
 
 router.get('/GetUser',GetUser);
 
-router.get('/GetUserById/:id',GetUserById )
+router.get('/GetUserById/:id',GetUserById );
 
 router.post('/NewUser', NewUser);
 

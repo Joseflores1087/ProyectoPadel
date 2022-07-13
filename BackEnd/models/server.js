@@ -3,9 +3,21 @@ const cors = require("cors");
 const mysql = require("mysql");
 const { database } = require("../database/key");
 const myconn = require("express-myconnection");
+const multer = require("multer");
+
 const path = require("path");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+
+const storage = multer.diskStorage({
+  destination: path.join(__dirname, "../public/img/logo_cancha"),
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+    //    },
+    //     filename: function (req, file, cb) {
+    //       cb(null, file.fieldname + '-' + Date.now())
+  }
+});
 
 class Server {
   constructor() {
@@ -13,8 +25,10 @@ class Server {
     this.app.use(cors());
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
+
     //Middlewares
     this.middlewares();
+
     //Rutas | Endpoints
     this.routes();
   }
@@ -39,11 +53,16 @@ class Server {
       next();
     });
 
+    
+    /**--------------------------------------------------------------------**/
+    /**--------------------------------------------------------------------**/
+  
     //bd
     this.app.use(myconn(mysql, database, "pool"));
 
     //directorio publico
-    this.app.use(express.static("public"));
+    this.app.use(express.static('public'));
+  
   }
 
   routes() {

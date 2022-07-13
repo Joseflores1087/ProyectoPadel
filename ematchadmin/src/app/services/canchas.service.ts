@@ -20,6 +20,8 @@ export class CanchasService {
   }
 
   NewCancha(CanchaData:any){
+    console.log(CanchaData);
+    
     return this.http.post(`${this.url}/api/cancha/NewCancha`, CanchaData);
   }
 
