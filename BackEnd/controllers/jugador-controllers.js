@@ -31,9 +31,7 @@ const errors = validationResult(req);
 if(!errors.isEmpty()){
   return res.status(400).json(errors);
 }
-
-
-  console.log(req.body);
+  //console.log(req.body);
   const {
     nombre,
     apellido,
