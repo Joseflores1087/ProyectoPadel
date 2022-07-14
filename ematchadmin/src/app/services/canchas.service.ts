@@ -19,10 +19,9 @@ export class CanchasService {
     return this.http.get<Cancha[]>(`${this.url}/api/cancha/GetCanchaById/${id}`);
   }
 
-  NewCancha(CanchaData:any){
-    console.log(CanchaData);
-    
-    return this.http.post(`${this.url}/api/cancha/NewCancha`, CanchaData);
+  NewCancha(bodyFile:any):Observable<object>{
+    console.log(bodyFile);
+    return this.http.post(`${this.url}/api/cancha/NewCancha`, bodyFile);
   }
 
   DeleteCancha(id:number){

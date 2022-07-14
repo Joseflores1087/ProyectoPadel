@@ -52,10 +52,37 @@ class Server {
       //this.app.locals = req.user;
       next();
     });
-
     
-    /**--------------------------------------------------------------------**/
-    /**--------------------------------------------------------------------**/
+    
+    // /**-----------------------MULTER - UPLOAD FILE-----------------------**/
+    //  /**--------------------------------------------------------------------**/
+    //  const storage = multer.diskStorage({
+    //   destination: path.join(__dirname, "../public/img/informes"),
+    //   filename: (req, file, cb) => {
+    //     cb(null, file.originalname);
+    //     //    },
+    //     //     filename: function (req, file, cb) {
+    //     //       cb(null, file.fieldname + '-' + Date.now())
+    //   },
+    // });
+    // const upload = multer({ storage });
+    // this.app.use(
+    //   multer({
+    //     storage,
+    //     dest: path.join(__dirname, "../public/img/informes"),
+    //     fileFilter: (req, file, cb) => {
+    //       const fileTypes = /jpg/;
+    //       const mimetype = fileTypes.test(file.mimetype);
+    //       const extname = fileTypes.test(path.extname(file.originalname));
+    //       if (mimetype && extname) {
+    //         return cb(null, true);
+    //       }
+    //       cb("El archivos debe ser un Formato válido");
+    //     },
+    //   }).single("file")
+    // );
+    // /**--------------------------------------------------------------------**/
+    // /**--------------------------------------------------------------------**/
   
     //bd
     this.app.use(myconn(mysql, database, "pool"));

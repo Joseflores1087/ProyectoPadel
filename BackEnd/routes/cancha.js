@@ -4,24 +4,27 @@ const multer  = require('multer')
 const path = require("path");
 
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, "../public/img/informes"),
-    filename: (req, File, cb) => {
-      cb(null, File.originalname);
-      //    },
-      //     filename: function (req, file, cb) {
-      //       cb(null, file.fieldname + '-' + Date.now())
-    },
-  });
-const upload = multer({ storage: storage ,dest:path.join(__dirname, "../public/img/logo_cancha") })
+  destination: path.join(__dirname, '../public/img/cancha_logo'),
+  filename: (req, File, cb) => {
+    const ext = File.originalname.split('.').pop()
+    const fileName = Date.now()
+    cb(null, File.originalname);
+    //    },
+    //     filename: function (req, file, cb) {
+    //       cb(null, file.fieldname + '-' + Date.now())
+  },
+});
+
+const upload = multer({ storage: storage })
 
 
 const router = Router ();
 
 router.get('/GetCancha',GetCancha);
 
-router.post('/imagen',upload.single("file"), img)
+router.post('/imagen', img)
 
-router.post('/NewCancha',NewCancha);
+router.post('/NewCancha',upload.single('file'),NewCancha);
 
 router.post('/DeleteCancha/:id', DeleteCancha);
 
