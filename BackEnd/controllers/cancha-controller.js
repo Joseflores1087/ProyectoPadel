@@ -46,12 +46,11 @@ const GetCanchaById = async (req, res = response) => {
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
 const NewCancha = async ( req, res = response, done) => {
-    console.log(req.body);
+    console.log(req.file.filename);
   // const errors = validationResult(req);
   // if (!errors.isEmpty()) {
   //     return res.status(400).json(errors);
   // }
-  console.log('hola',req.file);
   const {
     nombre_cancha,
     direccion,
@@ -59,7 +58,7 @@ const NewCancha = async ( req, res = response, done) => {
     codigo_postal,
     cantidad_canchas,
     id_user,
-    logo = req.file,
+    logo = req.file.filename,
   } = req.body;
 
   try {

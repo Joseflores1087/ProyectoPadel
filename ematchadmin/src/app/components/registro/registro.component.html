@@ -1,0 +1,129 @@
+<div class="container-fluid py-4">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <p class="text-uppercase text-sm">INFORMACIÓN DEL USUARIO</p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="newUser()" action="">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >Nombre</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="nombre"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >Apellido</label
+                    >
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="apellido"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >DNI</label
+                    >
+                    <input
+                      class="form-control"
+                      type="number"
+                      formControlName="dni"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >Teléfono</label
+                    >
+                    <input
+                      class="form-control"
+                      type="number"
+                      formControlName="celular"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >Email</label
+                    >
+                    <input
+                      class="form-control"
+                      type="email"
+                      formControlName="correo"
+                    />
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="canchaDatalist" class="form-label">Cancha</label>
+                    <select formControlName="id_cancha" class="form-select" id="cancha" required>
+                      <option selected disabled value="">Seleccionar Cancha</option>
+                      <option *ngFor="let c of canchas" value="{{c.id}}"> {{ c.nombre_cancha }}</option>
+                    </select>     
+                  </div>
+                </div> -->
+                <!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="rolDatalist" class="form-label"
+                      >Seleccionar rol</label
+                    >
+                    <select formControlName="id_rol" class="form-select" id="rol" required>
+                      <option selected disabled >Seleccionar un rol</option>
+                      <option *ngFor="let r of rol" value="{{r.id}}"> {{ r.nombre }}</option>
+                    </select>
+                  </div>
+                </div> -->
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="example-text-input" class="form-control-label"
+                      >Password</label
+                    >
+                    <input
+                      class="form-control"
+                      type="password"
+                      formControlName="password"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr class="horizontal dark" />
+              <!-- <p class="text-uppercase text-sm">INFORMACIÓN DE LA CANCHA</p>-->
+              <div class="row">
+                <div class="col-md-12">
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    style="margin-right: 1rem"
+                  >
+                    Guardar
+                  </button>
+                  <button
+                    class="btn btn-secondary"
+                    routerLink="/"
+                  >
+                    Atras
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -16,6 +16,8 @@ export class NewCanchaComponent implements OnInit {
   rol: any;
   cancha: Cancha[] = [];
   private fileName: any
+  private fileTmp: any;
+
   constructor(private fb: FormBuilder,
     private user: UserService,
     private canchas: CanchasService,
@@ -23,12 +25,12 @@ export class NewCanchaComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {
 
     this.form = new FormGroup({
-      nombre_cancha: new FormControl(''),
-      direccion: new FormControl(''),
-      telefono: new FormControl(''),
-      codigo_postal: new FormControl(''),
-      cantidad_canchas: new FormControl('', Validators.email),
-      id_user: new FormControl(''),
+      nombre_cancha: new FormControl('', Validators.required),
+      direccion: new FormControl('', Validators.required),
+      telefono: new FormControl('', Validators.required),
+      codigo_postal: new FormControl('', Validators.required),
+      cantidad_canchas: new FormControl('', [Validators.required, Validators.email]),
+      id_user: new FormControl('', Validators.required),
       file: new FormControl(''),
     })
   }
@@ -57,33 +59,35 @@ export class NewCanchaComponent implements OnInit {
   selectFile(event: any): void {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      console.log(file);
+      console.log(file.name);
+      this.fileTmp = file;
+      // {
+      //   fileRaw: file,
+      //   fileName: file.name
+      // }
       // const reader = new FileReader();
       // reader.readAsDataURL(file);
       //  reader.onload = (event: any)=>{
       //    this.imgURL = 'assets/img/pdf.png';
       //  }
-     
       console.log(file)
     }
-
   }
+
   newCancha() {
-    const formValue = {
-      nombre_cancha: this.form.value.nombre_cancha,
-      direccion: this.form.value.direccion,
-      telefono: this.form.value.telefono,
-      codigo_postal: this.form.value.codigo_postal,
-      cantidad_canchas: this.form.value.cantidad_canchas,
-      id_user: this.form.value.id_user,
-      file:  this.file,
-    }
-    
-    this.canchas.NewCancha(formValue).subscribe(res => {
+    const bodyFile: any = new FormData();
+    bodyFile.append('nombre_cancha', this.form.value.nombre_cancha);
+    bodyFile.append('direccion', this.form.value.direccion);
+    bodyFile.append('telefono', this.form.value.telefono);
+    bodyFile.append('codigo_postal', this.form.value.codigo_postal);
+    bodyFile.append('cantidad_canchas', this.form.value.cantidad_canchas);
+    bodyFile.append('id_user', this.form.value.id_user);
+    bodyFile.append('file', this.fileTmp);
+
+    this.canchas.NewCancha(bodyFile).subscribe(res => {
       this.router.navigate(['/dashboard/canchas']);
       console.log('Exito');
     })
-
   }
 
   getUser() {
