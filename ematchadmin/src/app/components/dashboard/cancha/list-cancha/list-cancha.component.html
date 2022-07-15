@@ -15,6 +15,7 @@
             <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
               <thead *ngIf="data?.length != 0">
                 <tr>
+                  
                   <th>NOMBRE</th>
                   <th>TELEFONO</th>
                   <td>DIRECCION</td>
@@ -26,7 +27,17 @@
               </thead>
               <tbody >
                 <tr *ngFor="let u of data">
-                  <td>{{u.nombre_cancha}}</td>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+                    <div>
+                      <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3"
+                          alt="user1">
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">{{u.nombre_cancha}}</h6>
+                  </div>
+                    </div>
+                </td>
                   <td>{{u.telefono}}</td>
                   <td>{{u.direccion}}</td>
                   <td>{{u.codigo_postal}}</td>
