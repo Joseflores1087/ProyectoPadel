@@ -2,8 +2,7 @@ const { response, request, json } = require("express");
 const bcryptjs = require("bcryptjs");
 const pool = require("../database/database");
 const { generarJWT } = require("../helpers/generar-jwt");
-// const { body } = require("express-validator");
-// const passport = require('passport');
+
 
 const login = async (req = request, res = response, done) => {
   console.log(req.body, "Exito");
