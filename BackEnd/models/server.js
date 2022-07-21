@@ -1,9 +1,11 @@
+
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
 const { database } = require("../database/key");
 const myconn = require("express-myconnection");
 const multer = require("multer");
+const errorToSlack = require('express-error-slack');
 
 const path = require("path");
 const morgan = require("morgan");
@@ -18,22 +20,29 @@ const storage = multer.diskStorage({
     //       cb(null, file.fieldname + '-' + Date.now())
   }
 });
-
 class Server {
   constructor() {
+    
     this.app = express();
+    this.app.use(errorToSlack({ webhookUri: 'https://hooks.slack.com/services/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' }))
     this.app.use(cors());
     this.port = process.env.PORT;
     this.authPath = "/api/auth";
-
+    
     //Middlewares
     this.middlewares();
 
     //Rutas | Endpoints
+    this.app.get('/error', function (req, res, next) {
+      const err = new Error('Internal Server Error')
+      err.status = 500
+      next(err)
+    })
     this.routes();
   }
 
   middlewares() {
+    
     this.app.use(morgan("dev"));
     // this.app.use(passport.initialize());
     // this.app.use(passport.session());
@@ -83,28 +92,32 @@ class Server {
     // );
     // /**--------------------------------------------------------------------**/
     // /**--------------------------------------------------------------------**/
-  
+    
     //bd
     this.app.use(myconn(mysql, database, "pool"));
 
     //directorio publico
     this.app.use(express.static('public'));
-  
+    
   }
 
   routes() {
+    
+
     this.app.use("/api/auth", require("../routes/auth"));
     this.app.use("/api/jugador", require("../routes/jugador"));
     this.app.use("/api/usuario", require("../routes/usuario"));
     this.app.use("/api/cancha", require("../routes/cancha"));
     this.app.use("/api/turnos", require("../routes/turno"));
   }
-
+  
   listen() {
     this.app.listen(this.port, () => {
       console.log("servidor corriento Puerto", process.env.PORT);
     });
+    
   }
+  
 }
 
 module.exports = Server;

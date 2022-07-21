@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   
-  url = 'http://localhost:42000';
+  url = 'http://localhost:45001';
 
   GetUser() {
     return this.http.get(`${this.url}/api/usuario/GetUser`);
