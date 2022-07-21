@@ -27,10 +27,10 @@ const GetJugador = async (req, res = response) => {
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
 const NewJugador = async (req, res = response) => {
-const errors = validationResult(req);
-if(!errors.isEmpty()){
-  return res.status(400).json(errors);
-}
+// const errors = validationResult(req);
+// if(!errors.isEmpty()){
+//   return res.status(400).json(errors);
+// }
   //console.log(req.body);
   const {
     nombre,
@@ -40,7 +40,7 @@ if(!errors.isEmpty()){
     email,
     sexo,
     n_celular,
-    foto_perfil,
+    foto_perfil= req.file,
     password,
   } = req.body;
 

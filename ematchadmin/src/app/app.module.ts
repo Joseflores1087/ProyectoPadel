@@ -13,7 +13,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from "angular-datatables";
 import { RegistroComponent } from './components/registro/registro.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
 
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -28,7 +35,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     ReactiveFormsModule,
     HttpClientModule,
     DataTablesModule,
-    SweetAlert2Module
+    SweetAlert2Module,
+    FullCalendarModule
   
 
   ],

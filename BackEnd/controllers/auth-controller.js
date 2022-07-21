@@ -4,6 +4,77 @@ const pool = require("../database/database");
 const { generarJWT } = require("../helpers/generar-jwt");
 
 
+/*****************LOGIN JUGADOR*********************************/
+const loginJugador = async (req = request, res = response, done) => {
+  console.log(req.body, "Exito");
+  const { correo, password } = req.body;
+  // const {password  = req.body.password;
+  try {
+    const usuario = pool.query(
+      "SELECT * FROM jugador WHERE correo = ?",
+      [correo],
+      async (error, results) => {
+        if (error) {
+          console.log(error, "Error");
+          return res.status(400).json({ error });
+        } else {
+
+          // ----------------------------------------------
+          // -------Verifica si existe el CORREO-------------
+          if (!results[0]) {
+            return res.status(400).json({
+              msj: "El correo es incorrecto",
+            });
+          }
+          // ----------------------------------------------
+          // -------Verifica si estado del usuario-------------
+          if (results[0].estado !== "A") {
+            return res.status(400).json({
+              msj: "Jugador no activo",
+            });
+          }
+          // -------Verifica si estado VALIDADO el usuario-------------
+          // if (results[0].validado !== "SI") {
+          //   return res.status(400).json({
+          //     msj: "Usuario no está validado",
+          //   });
+          // }
+          // ----------------------------------------------
+          // ------------Verificar password----------------
+          const validPassword = bcryptjs.compareSync(password, results[0].password);
+          if (!validPassword) {
+            return res.json({
+              ok: false,
+              msj: "Usuario / Password no son correctos - password",
+            });
+          } else if (validPassword) {
+            //si el password es válido
+            // ----------------------------------------------
+            // ------------Genero JWT------------------------
+            const token = await generarJWT(results[0].id);
+            console.log(results[0].id_rol);
+            const user = results[0];
+            console.log(user);
+            return res.json({
+              ok: true,
+              msj: "Usuario correcto",
+              results,
+              token,
+            });
+          }
+        }
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Hable con el Admin",
+    });
+  }
+};
+/***********************************************/
+
 const login = async (req = request, res = response, done) => {
   console.log(req.body, "Exito");
   const { correo, password } = req.body;
@@ -19,7 +90,7 @@ const login = async (req = request, res = response, done) => {
         } else {
 
           // ----------------------------------------------
-          // -------Verifica si existe el CUIT-------------
+          // -------Verifica si existe el CORREO-------------
 
           if (!results[0]) {
             return res.status(400).json({
@@ -51,7 +122,7 @@ const login = async (req = request, res = response, done) => {
             //si el password es válido
             // ----------------------------------------------
             // ------------Genero JWT------------------------
-            const token = await generarJWT(results[0].id,results[0].nombre, results[0].id_rol);
+            const token = await generarJWT(results[0].id, results[0].nombre, results[0].id_rol);
             console.log(results[0].id_rol);
             const user_rol = results[0].id_rol;
             const usuario = results[0].id;
@@ -96,6 +167,7 @@ const getInicio = async (req = request, res = response) => {
 
 
 module.exports = {
+  loginJugador,
   login,
   getInicio,
 };

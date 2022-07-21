@@ -9,7 +9,7 @@ export class CanchasService {
 
   constructor(private http: HttpClient) { }
 
-  url = 'http://localhost:42000';
+  url = 'http://localhost:45001';
 
   GetCancha(){
     return this.http.get(`${this.url}/api/cancha/GetCancha`);
