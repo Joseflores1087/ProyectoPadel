@@ -56,7 +56,7 @@ const NewJugador = async (req, res = response) => {
           if (results[0]) {
             return res.status(200).json({
               ok: false,
-              msj: "Ya existe un Usuario Asociado a ese Numero de celular",
+              msj: "Ya existe un Usuario Asociado a esa direccion de email",
             });
           } else if (!results[0]) {
             //Encriptar Password
