@@ -1,6 +1,9 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { GetJugador, GetSeguidos, ChangePaass, NewJugador, EditJugador, DeleteJugador } = require('../controllers/jugador-controllers');
+const { GetJugador, GetSeguidos, NewJugador, EditJugador, DeleteJugador,
+    recuperarCuenta,
+    corroborarCodigo,
+    cambiarPassword, } = require('../controllers/jugador-controllers');
 
 const multer = require('multer')
 const path = require("path");
@@ -37,8 +40,14 @@ router.post('/NewJugador'
 
 router.post('/EditJugador/:id', EditJugador);
 
-router.put('/ChangePaass/:id', ChangePaass);
+//router.put('/ChangePaass/:id', ChangePaass);
 
 router.delete('/DeleteJugador/:id', DeleteJugador);
+
+router.post('/recuperarCuenta', recuperarCuenta);
+
+router.post('/corroborarCodigo', corroborarCodigo);
+
+router.post('/cambiarPassword', cambiarPassword);
 
 module.exports = router;
