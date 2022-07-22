@@ -11,7 +11,7 @@ const loginJugador = async (req = request, res = response, done) => {
   // const {password  = req.body.password;
   try {
     const usuario = pool.query(
-      "SELECT * FROM jugador WHERE correo = ?",
+      "SELECT * FROM jugador WHERE email = ?",
       [correo],
       async (error, results) => {
         if (error) {
