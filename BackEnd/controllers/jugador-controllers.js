@@ -24,7 +24,7 @@ const GetJugador = async (req, res = response) => {
   }
 };
 //-----------------------------------------------------------
-//----------------------------GRABAR PERSONA-------------------------
+//----------------------------GRABAR JUGADOR-------------------------
 const NewJugador = async (req, res = response) => {
   // const errors = validationResult(req);
   // if(!errors.isEmpty()){
@@ -45,8 +45,8 @@ const NewJugador = async (req, res = response) => {
 
   try {
     const usuario = await pool.query(
-      "SELECT * FROM jugador WHERE dni = ? OR n_celular =?",
-      [dni, n_celular],
+      "SELECT * FROM jugador WHERE email = ? OR n_celular =?",
+      [email, n_celular],
       async (error, results) => {
         if (error) {
           return res.status(400).json(error);
@@ -56,7 +56,7 @@ const NewJugador = async (req, res = response) => {
           if (results[0]) {
             return res.status(200).json({
               ok: false,
-              msj: "Ya existe un Usuario Asociado a ese DNI o Numero de celular",
+              msj: "Ya existe un Usuario Asociado a ese Numero de celular",
             });
           } else if (!results[0]) {
             //Encriptar Password
