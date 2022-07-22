@@ -14,7 +14,7 @@
           database: {
               db_dns:'mysql',  
               port: '3306',
-              database: '911_tecnica',
+              database: 'ematch',
               host: 'localhost',
               user: 'sitamimdb',
               password: 'sit777***=',

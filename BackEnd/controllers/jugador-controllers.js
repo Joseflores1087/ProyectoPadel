@@ -39,8 +39,8 @@ const NewJugador = async (req, res = response) => {
     email,
     sexo,
     n_celular,
-    foto_perfil = req.file,
     password,
+    foto_perfil = req.file,
   } = req.body;
 
   try {
