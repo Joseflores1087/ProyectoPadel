@@ -36,7 +36,7 @@ router.post('/NewJugador',
     //     check('password', 'Campo password requerido y debe tener mas de 8 caracteres').isLength({min: 8}),
     //     //check('email', 'Correo no válido').isEmail(),
     //]
-    , NewJugador);
+    NewJugador);
 
 router.post('/EditJugador/:id', EditJugador);
 
