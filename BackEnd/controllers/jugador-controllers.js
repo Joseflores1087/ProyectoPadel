@@ -45,8 +45,8 @@ const NewJugador = async (req, res = response) => {
 
   try {
     const usuario = await pool.query(
-      "SELECT * FROM jugador WHERE email = ? OR n_celular =?",
-      [email, n_celular],
+      "SELECT * FROM jugador WHERE email = ?",
+      [email],
       async (error, results) => {
         if (error) {
           return res.status(400).json(error);
