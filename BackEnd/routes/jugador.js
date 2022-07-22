@@ -28,11 +28,11 @@ router.get('/GetJugador', GetJugador);
 
 router.get('/GetSeguidos/:id', GetSeguidos)
 
-router.post('/NewJugador'
+router.post('/NewJugador',
     //,[
     //     check('email', 'Correo no válido').isEmail(),
-    //     check('nombre', 'Campo nombre requerido').not().isEmpty(),
-    //     check('apellido', 'Campo apellido requerido').not().isEmpty(),
+         check('nombre', 'Campo nombre requerido').not().isEmpty(),
+         check('apellido', 'Campo apellido requerido').not().isEmpty(),
     //     check('password', 'Campo password requerido y debe tener mas de 8 caracteres').isLength({min: 8}),
     //     //check('email', 'Correo no válido').isEmail(),
     //]
