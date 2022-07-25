@@ -46,7 +46,7 @@ const GetPredioById = async (req, res = response) => {
 //-------------------------------------------------------
 //GET----------------------------------------------------
 const GetCancha = async (req, res = response) => {
-  const {predio}= req.body;
+  const {predio}= req.params;
   try {
     cancha = await pool.query("SELECT * FROM canchas WHERE id_predio = ?",[predio]);
   } catch (e) {
