@@ -109,7 +109,7 @@ class Server {
     this.app.use("/api/usuario", require("../routes/usuario"));
     this.app.use("/api/predio", require("../routes/predio"));
     this.app.use("/api/turnos", require("../routes/turno"));
-    his.app.use("/api/horario", require("../routes/horarios"));
+    this.app.use("/api/horario", require("../routes/horarios"));
   }
   
   listen() {
