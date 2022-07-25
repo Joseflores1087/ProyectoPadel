@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { GetCancha, GetCanchaById ,NewCancha, DeleteCancha, img } = require ('../controllers/cancha-controller');
+const { GetPredio,GetCancha, GetCanchaById ,NewCancha, DeleteCancha, img } = require ('../controllers/predio-controller');
 const multer  = require('multer')
 const path = require("path");
 
@@ -20,7 +20,9 @@ const upload = multer({ storage: storage })
 
 const router = Router ();
 
-router.get('/GetCancha',GetCancha);
+router.get('/GetPredio',GetPredio);
+
+router.post('/GetCancha',GetCancha);
 
 router.post('/imagen', img)
 
