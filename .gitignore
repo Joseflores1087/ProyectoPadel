@@ -105,3 +105,4 @@ dist
 
 #keyDatabase
 database/
+BackEnd/database/key.js

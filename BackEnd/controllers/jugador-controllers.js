@@ -10,7 +10,7 @@ const GetJugador = async (req, res = response) => {
   const { id }= req.params;
   try {
     const jugador = await pool.query(
-      "SELECT j.*, s.id FROM jugador j LEFT JOIN seguidores s ON s.id_jugador=j.id AND s.id_seguido= ? WHERE 1",[id]);
+      "SELECT j.*, s.id AS id_seguidores FROM jugador j LEFT JOIN seguidores s ON s.id_jugador=j.id AND s.id_seguido= ? WHERE 1",[id]);
     if (jugador.length > 0) {
       res.send(jugador);
     } else {
