@@ -16,6 +16,24 @@ try {
 }
 }
 
+
+const GetReservaById = async (req = request, res = response)=>{
+    const {id} = req.body;
+    console.log(id);
+try {
+    turno = await pool.query("SELECT * FROM reservas WHERE id_jugador=?",[id]);
+        if (turno.length > 0) {
+            return res.json({
+                turno
+            })
+        } else {
+            res.status(404).json({ message: 'Not result' });
+        }
+} catch (error) {
+    
+}
+}
+
 /****************GET TURNO***********************/
 const GetTurno = async (req = request, res = response)=>{
     console.log('hola');
@@ -63,6 +81,7 @@ try {
 /****************END GET BY ID TURNO***********************/
 
 module.exports = {
+    GetReservaById,
     GetReserva,
     GetTurno,
     NewTurno,  
