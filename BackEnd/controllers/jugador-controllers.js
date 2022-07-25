@@ -377,7 +377,7 @@ const FollowJugador = async (req, res = response) => {
 }
 
 const UnfollowJugador = async (req= request, res = response) => {
-  const { id } = req.params;
+  const { id } = req.body;
   try {
     const unfollow =  pool.query("DELETE  FROM seguidores WHERE id_seguido = ?", [id]);
     res.json({

@@ -52,8 +52,8 @@ router.post('/corroborarCodigo', corroborarCodigo);
 
 router.post('/cambiarPassword', cambiarPassword);
 
-router.post('/FollowJugador/:id', FollowJugador)
+router.post('/FollowJugador', FollowJugador)
 
-router.post('/UnfollowJugador/:id', UnfollowJugador)
+router.post('/UnfollowJugador', UnfollowJugador)
 
 module.exports = router;
