@@ -3,7 +3,7 @@ const pool = require("../database/database");
 
 
 /****************GET TURNO***********************/
-const GetHorario = async (req, res = response)=>{
+const GetHorario = async (req= request, res = response)=>{
     const {id} = req.params;
     console.log('Hola', id);
 // try {
