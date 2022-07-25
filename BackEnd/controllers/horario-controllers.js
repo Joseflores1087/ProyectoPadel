@@ -4,9 +4,9 @@ const pool = require("../database/database");
 
 /****************GET TURNO***********************/
 const GetHorario = async (req = request, res = response)=>{
-    const {canchga} = req.body;
+    const {id} = req.params;
 try {
-    horario = await pool.query("SELECT * FROM horarios WHERE id_cancha = ?",[cancha]);
+    horario = await pool.query("SELECT * FROM horarios WHERE id_cancha = ?",[id]);
         if (turno.length > 0) {
             return res.send(horario);
         } else {
