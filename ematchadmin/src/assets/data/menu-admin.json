@@ -14,5 +14,9 @@
     {
         "nombre":"Jugadores",
         "redirect":"/dashboard/Jugadores"
+    },
+    {
+        "nombre":"Horarios",
+        "redirect":"/dashboard/NewHorario"
     }
   ]

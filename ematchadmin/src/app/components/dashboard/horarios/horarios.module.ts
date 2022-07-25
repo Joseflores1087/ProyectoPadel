@@ -5,14 +5,15 @@ import { HorariosRoutingModule } from './horarios-routing.module';
 import { ListHorariosComponent } from './list-horarios/list-horarios.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction';
+import { NewHorarioComponent } from './new-horario/new-horario.component'; // a plugin!
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
 ]);
 @NgModule({
-  declarations: [ListHorariosComponent],
+  declarations: [ListHorariosComponent, NewHorarioComponent],
   imports: [
     CommonModule,
     HorariosRoutingModule,

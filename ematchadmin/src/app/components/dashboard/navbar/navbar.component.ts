@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   cargarMenu() {
     if (this.rol == '1') {
       this._menuService.getMenu().subscribe(data => {
+        console.log(data);
         this.menu = data;
       })
     }
