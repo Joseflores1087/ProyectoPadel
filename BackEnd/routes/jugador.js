@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { GetJugador, GetSeguidos, NewJugador, EditJugador, DeleteJugador,
+const { GetJugador, GetJugadorById,GetSeguidos, NewJugador, EditJugador, DeleteJugador,
     recuperarCuenta,
     corroborarCodigo,
     cambiarPassword, } = require('../controllers/jugador-controllers');
@@ -25,6 +25,8 @@ const upload = multer({ storage: storage })
 const router = Router();
 
 router.get('/GetJugador', GetJugador);
+
+router.get('/GetJugadorById/:id', GetJugadorById);
 
 router.get('/GetSeguidos/:id', GetSeguidos)
 
