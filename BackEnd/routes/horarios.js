@@ -4,6 +4,6 @@ const {  GetHorario } = require ('../controllers/horario-controllers');
 
 const router = Router ();
 
-router.post('/GetHorario/:id',GetHorario);
+router.get('/GetHorario/:id',GetHorario);
 
 module.exports = router;
