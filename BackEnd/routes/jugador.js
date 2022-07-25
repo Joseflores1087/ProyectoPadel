@@ -3,7 +3,7 @@ const { check } = require('express-validator');
 const { GetJugador, GetJugadorById, GetSeguidos, NewJugador, EditJugador, DeleteJugador,
     recuperarCuenta,
     corroborarCodigo,
-    cambiarPassword, } = require('../controllers/jugador-controllers');
+    cambiarPassword, FollowJugador} = require('../controllers/jugador-controllers');
 
 const multer = require('multer')
 const path = require("path");
@@ -51,5 +51,7 @@ router.post('/recuperarCuenta', recuperarCuenta);
 router.post('/corroborarCodigo', corroborarCodigo);
 
 router.post('/cambiarPassword', cambiarPassword);
+
+router.post('/FollowJugador', FollowJugador)
 
 module.exports = router;

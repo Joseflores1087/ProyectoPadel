@@ -3,6 +3,7 @@ import { PredioService } from 'src/app/services/predio.service';
 import { Predio } from 'src/app/interfaces/predio';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HorariosService } from 'src/app/services/horarios.service';
 @Component({
   selector: 'app-new-horario',
   templateUrl: './new-horario.component.html',
@@ -15,7 +16,7 @@ export class NewHorarioComponent implements OnInit {
   user = localStorage.getItem('user_id');
   form: FormGroup;
 
-  constructor(private fb: FormBuilder,private predio: PredioService, private router: Router) {
+  constructor(private fb: FormBuilder,private predio: PredioService, private router: Router, private hora: HorariosService) {
     this.form = new FormGroup({
       dia: new FormControl(''),
       hora_desde: new FormControl(''),
@@ -51,7 +52,7 @@ export class NewHorarioComponent implements OnInit {
       hora_desde: this.form.value.hora_desde,
       hora_hasta: this.form.value.hora_hasta,
     }
-    this.user.AddUser(formValue).subscribe(res => {
+    this.hora.AddHorario(formValue).subscribe(res => {
       this.router.navigate(['dashboard/horarios']);
       console.log('Exito');
     })

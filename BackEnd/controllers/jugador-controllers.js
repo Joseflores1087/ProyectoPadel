@@ -354,6 +354,28 @@ const GetSeguidos = async (req, res = response) => {
   }
 }
 
+const FollowJugador = async (req, res = response) =>{
+  const { id, id_seguid }= req.body;
+  
+try {
+  let myQuery = `INSERT INTO seguidores (id_jugador, id_seguido) VALUES ('${id}','${id_seguid}')`;
+ pool.query(myQuery, (error, results) => {
+   if (error) {
+     return res.status(400).json(error);
+     console.log(error);
+   } else {
+     return res.status(200).json({
+       ok: true,
+       results,
+     });
+   }
+ });
+}
+catch (error) {
+  
+}
+} 
+
 module.exports = {
   GetJugador,
   GetJugadorById,
@@ -363,5 +385,6 @@ module.exports = {
   recuperarCuenta,
   corroborarCodigo,
   cambiarPassword,
-  GetSeguidos
+  GetSeguidos,
+  FollowJugador
 };
