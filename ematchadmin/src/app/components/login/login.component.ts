@@ -30,9 +30,11 @@ export class LoginComponent implements OnInit {
     this.login.login(parametros).subscribe((res: any) => {
 
       if (res['ok']) {
+        console.log(res);
         
         localStorage.setItem('token', res.token);
-        localStorage.setItem('user_rol', res.user_rol);
+        localStorage.setItem('user_rol', res.user_rol,);
+        localStorage.setItem('user_id', res.usuario);
         console.log('Capo entraste');
         this.router.navigate(['dashboard']);
         

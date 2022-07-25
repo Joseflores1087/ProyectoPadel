@@ -45,6 +45,13 @@ const routes: Routes = [
             (x) => x.JugadorModule
           ),
       },
+      {
+        path: 'newHorario',
+        loadChildren: () =>
+          import('./horarios/horarios.module').then(
+            (x) => x.HorariosModule
+          ),
+      },
     
      
       // {

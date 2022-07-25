@@ -8,9 +8,9 @@ const path = require("path");
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
-const GetCancha = async (req, res = response) => {
+const GetPredio = async (req, res = response) => {
   try {
-    cancha = await pool.query("SELECT * FROM cancha WHERE estado = 'A'");
+    cancha = await pool.query("SELECT * FROM predio WHERE estado = 'A'");
   } catch (e) {
     res.status(404).json({ message: "Somenthing goes wrong!" });
   }
@@ -23,6 +23,26 @@ const GetCancha = async (req, res = response) => {
     // });
   }
 };
+
+//-------------------------------------------------------
+//GET----------------------------------------------------
+const GetCancha = async (req, res = response) => {
+  const {predio}= req.body;
+  try {
+    cancha = await pool.query("SELECT * FROM canchas WHERE id_predio = ?",[predio]);
+  } catch (e) {
+    res.status(404).json({ message: "Somenthing goes wrong!" });
+  }
+  if (cancha.length > 0) {
+    return res.send(cancha);
+  } else {
+    return res.send(cancha);
+    // res.status(404).json({
+    //     message: "No existen Canchas"
+    // });
+  }
+};
+
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
@@ -45,8 +65,8 @@ const GetCanchaById = async (req, res = response) => {
 
 //-----------------------------------------------------------
 //----------------------------GRABAR PERSONA-------------------------
-const NewCancha = async ( req, res = response, done) => {
-    console.log(req.file.filename);
+const NewCancha = async (req, res = response, done) => {
+  console.log(req.file.filename);
   // const errors = validationResult(req);
   // if (!errors.isEmpty()) {
   //     return res.status(400).json(errors);
@@ -90,7 +110,7 @@ const NewCancha = async ( req, res = response, done) => {
         }
       }
     );
-  } catch (error) {}
+  } catch (error) { }
 };
 
 //-------------------------------------------------------------------------
@@ -136,7 +156,7 @@ const EditCancha = async (req, res = response) => {
         }
       }
     );
-  } catch (error) {}
+  } catch (error) { }
 };
 
 //-----------------------------------------------------------
@@ -158,12 +178,13 @@ const DeleteCancha = async (req, res = response) => {
   }
 };
 
-const img = async (req, res = response)=>{
-    console.log(req.file);
+const img = async (req, res = response) => {
+  console.log(req.file);
 }
 
 module.exports = {
-    img,
+  img,
+  GetPredio
   GetCancha,
   GetCanchaById,
   NewCancha,
