@@ -184,7 +184,7 @@ const img = async (req, res = response) => {
 
 module.exports = {
   img,
-  GetPredio
+  GetPredio,
   GetCancha,
   GetCanchaById,
   NewCancha,
