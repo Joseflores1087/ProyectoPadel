@@ -54,6 +54,6 @@ router.post('/cambiarPassword', cambiarPassword);
 
 router.post('/FollowJugador/:id', FollowJugador)
 
-router.delete('/UnfollowJugador/:id', UnfollowJugador)
+router.post('/UnfollowJugador/:id', UnfollowJugador)
 
 module.exports = router;

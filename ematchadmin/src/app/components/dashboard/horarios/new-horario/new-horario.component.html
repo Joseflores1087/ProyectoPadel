@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <p class="text-uppercase text-sm">INFORMACIÓN DE LA CANCHA</p>
 
-                    <form >
+                    <form  [formGroup]="form" (ngSubmit)="newHorario()" action="">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -29,7 +29,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Dia</label>
-                                    <input class="form-control" formControlName="dia" type="date" value="">
+                                    <input class="form-control" formControlName="dia" type="number" value="">
                                 </div>
                             </div>
                             <div class="col-md-3">
