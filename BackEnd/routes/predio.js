@@ -26,7 +26,7 @@ router.get('/GetPredio',GetPredio);
 
 router.get('/GetPredioById/:id',GetPredioById);
 
-router.get('/GetCancha/:id',GetCancha);
+router.get('/GetCancha/:id', GetCancha);
 
 router.post('/imagen', img)
 

@@ -45,21 +45,23 @@ const GetPredioById = async (req, res = response) => {
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
-const GetCancha = async (req, res = response) => {
-  const {predio}= req.params;
-  try {
-    cancha = await pool.query("SELECT * FROM canchas WHERE id_predio = ?",[predio]);
-  } catch (e) {
-    res.status(404).json({ message: "Somenthing goes wrong!" });
-  }
-  if (cancha.length > 0) {
-    return res.send(cancha);
-  } else {
-    return res.send(cancha);
-    // res.status(404).json({
-    //     message: "No existen Canchas"
-    // });
-  }
+const GetCancha = async (req=request , res = response) => {
+  const {id}= req.params;
+  
+   try {
+     canchas = await pool.query("SELECT * FROM canchas WHERE id_predio = ?",[id]);
+     if (canchas.length > 0) {
+      res.send(canchas);
+    } else {
+      res.send("No existen Canchas");
+      res.status(404).json({
+        message: "Not result",
+      });
+    }
+   } catch (e) {
+     res.status(404).json({ message: "Somenthing goes wrong!" });
+   }
+  
 };
 
 
