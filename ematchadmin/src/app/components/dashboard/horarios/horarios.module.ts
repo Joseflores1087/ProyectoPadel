@@ -7,6 +7,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { NewHorarioComponent } from './new-horario/new-horario.component'; // a plugin!
+import { SharedModule } from '../../shared/shared.module';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -17,7 +18,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   imports: [
     CommonModule,
     HorariosRoutingModule,
-    FullCalendarModule
+    FullCalendarModule,
+    SharedModule
   
   ]
 })

@@ -24,7 +24,7 @@ export class NewCanchaComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute) {
 
-    this.form = new FormGroup({
+    this.form = new  FormGroup({
       nombre_cancha: new FormControl('', Validators.required),
       direccion: new FormControl('', Validators.required),
       telefono: new FormControl('', Validators.required),

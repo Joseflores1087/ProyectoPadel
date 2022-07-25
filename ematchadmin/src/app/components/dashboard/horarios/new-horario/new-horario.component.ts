@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PredioService } from 'src/app/services/predio.service';
 import { Predio } from 'src/app/interfaces/predio';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HorariosService } from 'src/app/services/horarios.service';
 @Component({
@@ -16,12 +16,11 @@ export class NewHorarioComponent implements OnInit {
   user = localStorage.getItem('user_id');
   form: FormGroup;
 
-  constructor(private fb: FormBuilder,private predio: PredioService, private router: Router, private hora: HorariosService) {
+  constructor(private fb: FormBuilder, private predio: PredioService, private router: Router, private hora: HorariosService) {
     this.form = new FormGroup({
-      dia: new FormControl(''),
-      hora_desde: new FormControl(''),
-      hora_hasta: new FormControl(''),
-
+      id_cancha: new FormControl('', Validators.required),
+      dia: new FormControl('', Validators.required),
+      hora: new FormControl('', Validators.required),
     })
   }
 
@@ -42,16 +41,17 @@ export class NewHorarioComponent implements OnInit {
     this.predio.GetPredioByid(id).subscribe(res => {
       this.predios = res;
       console.log(res);
-
     })
   }
 
-  newHorario(){
+  newHorario() {
     const formValue = {
+      id_cancha: this.form.value.id_cancha,
       dia: this.form.value.dia,
-      hora_desde: this.form.value.hora_desde,
-      hora_hasta: this.form.value.hora_hasta,
+      hora: this.form.value.hora,
     }
+    console.log(this.form);
+    
     this.hora.AddHorario(formValue).subscribe(res => {
       this.router.navigate(['dashboard/horarios']);
       console.log('Exito');

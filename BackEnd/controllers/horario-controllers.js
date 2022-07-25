@@ -1,5 +1,6 @@
 const { response, request } = require("express");
 const pool = require("../database/database");
+const { login } = require("./auth-controller");
 
 /****************GET TURNO***********************/
 const GetHorario = async (req, res = response) => {
@@ -20,9 +21,10 @@ const GetHorario = async (req, res = response) => {
 
 const AddHorario = async (req, res = response) => {
   const { id } = req.params;
-  const { id_cancha, hora_desde, hora_hasta } = req.body;
+  const { id_cancha,dia, hora} = req.body;
+ 
   try {
-    let myQuery = `INSERT INTO horarios (id_cancha, hora_desde, hora_hasta) VALUES ('${id_cancha}','${hora_desde}','${hora_hasta}')`;
+    let myQuery = `INSERT INTO horarios (id_cancha, dia,hora) VALUES ('${id_cancha}','${dia}','${hora}')`;
     pool.query(myQuery, (error, results) => {
       if (error) {
         return res.status(400).json(error);

@@ -11,7 +11,7 @@ export class HorariosService {
   url = 'http://localhost:45001';
 
   AddHorario(UserData:any){
-    return this.http.post(`${this.url}/api/horario`, UserData);
+    return this.http.post(`${this.url}/api/horario/AddHorario`, UserData);
   }
 
 
