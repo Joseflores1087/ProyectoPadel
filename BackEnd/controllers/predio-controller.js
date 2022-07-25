@@ -26,6 +26,25 @@ const GetPredio = async (req, res = response) => {
 
 //-------------------------------------------------------
 //GET----------------------------------------------------
+const GetPredioById = async (req, res = response) => {
+  const { id } = req.params;
+  try {
+    cancha = await pool.query("SELECT * FROM predio WHERE id_user = ?", [id]);
+  } catch (e) {
+    res.status(404).json({ message: "Somenthing goes wrong!" });
+  }
+  if (cancha.length > 0) {
+    return res.send(cancha);
+  } else {
+    return res.send(cancha);
+    // res.status(404).json({
+    //     message: "No existen Canchas"
+    // });
+  }
+};
+
+//-------------------------------------------------------
+//GET----------------------------------------------------
 const GetCancha = async (req, res = response) => {
   const {predio}= req.body;
   try {
@@ -185,6 +204,7 @@ const img = async (req, res = response) => {
 module.exports = {
   img,
   GetPredio,
+  GetPredioById,
   GetCancha,
   GetCanchaById,
   NewCancha,

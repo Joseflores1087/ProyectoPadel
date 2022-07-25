@@ -23,6 +23,27 @@ const GetJugador = async (req, res = response) => {
     res.status(404).json({ message: "Somenthing goes wrong!" });
   }
 };
+
+//-------------------------------------------------------
+//GET----------------------------------------------------
+const GetJugadorById = async (req, res = response) => {
+  const { id } = req.params;  
+  try {
+    const jugador = await pool.query(
+      "SELECT * FROM jugador WHERE id = ?",[id]
+    );
+    if (jugador.length > 0) {
+      res.send(jugador);
+    } else {
+      res.send("No existen Usuarios");
+      res.status(404).json({
+        message: "Not result",
+      });
+    }
+  } catch (e) {
+    res.status(404).json({ message: "Somenthing goes wrong!" });
+  }
+};
 //-----------------------------------------------------------
 //----------------------------GRABAR JUGADOR-------------------------
 const NewJugador = async (req, res = response) => {
@@ -335,6 +356,7 @@ const GetSeguidos = async (req, res = response) => {
 
 module.exports = {
   GetJugador,
+  GetJugadorById,
   NewJugador,
   EditJugador,
   DeleteJugador,

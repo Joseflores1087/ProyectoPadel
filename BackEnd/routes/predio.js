@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { GetPredio,GetCancha, GetCanchaById ,NewCancha, DeleteCancha, img } = require ('../controllers/predio-controller');
+const { GetPredio,GetPredioById,GetCancha, GetCanchaById ,NewCancha, DeleteCancha, img } = require ('../controllers/predio-controller');
 const multer  = require('multer')
 const path = require("path");
 
@@ -20,7 +20,11 @@ const upload = multer({ storage: storage })
 
 const router = Router ();
 
+
+
 router.get('/GetPredio',GetPredio);
+
+router.get('/GetPredioById/:id',GetPredioById);
 
 router.get('/GetCancha/:id',GetCancha);
 
