@@ -8,17 +8,17 @@ const bcryptjs = require("bcryptjs");
 const GetUser = async (req = request, res = response) => {
   try {
     users = await pool.query("SELECT * FROM user WHERE estado = 'A'");
+    if (users.length > 0) {
+      return res.send(users);
+    }
+    else {
+      res.send('No existen Usuarios cargados');
+      console.log('Exito');
+    }
   } catch (e) {
     res.status(404).json({ message: 'Somenthing goes wrong!' });
   }
-  if (users.length > 0) {
-    
-    return res.send(users);
-  }
-  else {
-    res.send('No existen Usuarios cargados');
-    console.log('Exito');
-  }
+ 
 };
 //----------------------------------------------------------------
 //----------------------------END GET USER-------------------------

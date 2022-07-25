@@ -1,8 +1,9 @@
 const { Router } = require('express');
-const { GetTurno, NewTurno,  DeleteTurno, GetTurnoById  } = require ('../controllers/turno-controller');
+const { GetTurno, GetReserva ,NewTurno,  DeleteTurno, GetTurnoById  } = require ('../controllers/turno-controller');
 
 
 const router = Router ();
+router.get('/GetReserva', GetReserva);
 
 router.get('/GetTurno',GetTurno);
 

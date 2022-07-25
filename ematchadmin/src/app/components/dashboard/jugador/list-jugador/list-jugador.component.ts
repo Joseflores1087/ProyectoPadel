@@ -9,10 +9,11 @@ import { JugadoresService } from 'src/app/services/jugadores.service';
 export class ListJugadorComponent implements OnInit {
   jugador: any;
   seguido: any;
+  user = localStorage.getItem('user_id');
   constructor(private jug: JugadoresService) { }
 
   ngOnInit(): void {
-    this.jug.GetJugadores().subscribe(res => {
+    this.jug.GetJugadores(this.user).subscribe(res => {
       this.jugador = res;
 
     })

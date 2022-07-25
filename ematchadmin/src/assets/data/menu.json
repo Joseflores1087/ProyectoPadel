@@ -4,7 +4,7 @@
         "redirect":"/dashboard/usuarios"
     },
     {
-        "nombre":"Canchas",
+        "nombre":"Predios",
         "redirect":"/dashboard/canchas"
     },
     {

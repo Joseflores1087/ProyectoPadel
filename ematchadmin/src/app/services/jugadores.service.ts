@@ -10,8 +10,8 @@ export class JugadoresService {
   
   url = 'http://localhost:45001';
 
-  GetJugadores() {
-    return this.http.get(`${this.url}/api/jugador/GetJugador`);
+  GetJugadores(id:any) {
+    return this.http.get(`${this.url}/api/jugador/GetJugador/${id}`);
   }
 
   GetSigo(id:number) {

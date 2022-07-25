@@ -12,7 +12,7 @@ import { HorariosService } from 'src/app/services/horarios.service';
 export class NewHorarioComponent implements OnInit {
   lista: number[] = [0];
   predios: any;
-  id = localStorage.getItem('user_id');;
+  id = localStorage.getItem('user_id');
   user = localStorage.getItem('user_id');
   form: FormGroup;
 
