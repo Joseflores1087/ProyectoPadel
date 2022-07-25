@@ -22,7 +22,7 @@ const router = Router ();
 
 router.get('/GetPredio',GetPredio);
 
-router.post('/GetCancha',GetCancha);
+router.get('/GetCancha/:id',GetCancha);
 
 router.post('/imagen', img)
 
