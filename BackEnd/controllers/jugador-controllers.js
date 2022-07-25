@@ -379,7 +379,7 @@ const FollowJugador = async (req, res = response) => {
 const UnfollowJugador = async (req= request, res = response) => {
   const { id } = req.params;
   try {
-    const unfollow = await pool.query("DELETE  FROM seguidores WHERE id_jugador = ?", [id]);
+    const unfollow = await pool.query("DELETE  FROM seguidores WHERE id_seguido = ?", [id]);
     res.json({
       msj: 'Seguidor borrado'
     })
