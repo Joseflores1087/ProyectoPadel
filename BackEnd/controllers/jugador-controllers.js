@@ -355,10 +355,10 @@ const GetSeguidos = async (req, res = response) => {
 }
 
 const FollowJugador = async (req, res = response) =>{
-  const { id, id_seguid }= req.body;
+  const { id_jugador , id_seguido }= req.body;
   
 try {
-  let myQuery = `INSERT INTO seguidores (id_jugador, id_seguido) VALUES ('${id}','${id_seguid}')`;
+  let myQuery = `INSERT INTO seguidores (id_jugador, id_seguido) VALUES ('${id_jugador}','${id_seguido}')`;
  pool.query(myQuery, (error, results) => {
    if (error) {
      return res.status(400).json(error);
