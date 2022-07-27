@@ -3,7 +3,7 @@
         <div class="card" style="width: 100%; margin-top: 1rem;">  
           <div class="card-header pb-0">
             <div class="d-flex align-items-center">
-              <p class="mb-0">CANCHAS</p>
+              <p class="mb-0">PREDIOS</p>
               <button class="btn btn-primary btn-sm ms-auto" routerLink="NewCancha">Agregar</button>
             </div>
           </div>
@@ -34,7 +34,7 @@
                           alt="user1">
                   </div>
                   <div class="d-flex flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm">{{u.nombre_cancha}}</h6>
+                    <h6 class="mb-0 text-sm" style="text-transform: uppercase;">{{u.nombre_cancha}}</h6>
                   </div>
                     </div>
                 </td>
@@ -42,7 +42,7 @@
                   <td>{{u.direccion}}</td>
                   <td>{{u.codigo_postal}}</td>
                   <td>{{u.cantidad_canchas}}</td>
-                  <td> 
+                  <td style="text-align: right;"> 
                     <button [routerLink]="['EditCancha/', u.id]" class="btn btn-primary" style="color:white; margin-right: 1rem;"><span><i style="color:white" class="fa fa-pen"></i></span></button>
                     <button class="btn btn-danger" (click)="DelteCancha(u.id)"><span><i class="fas fa-trash"></i></span></button> 
                   </td>

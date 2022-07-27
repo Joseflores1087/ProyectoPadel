@@ -24,9 +24,11 @@
               <td>{{u.dni}}</td>
               <td>{{u.correo}}</td>
               <td style="text-align:center;"><a href=""><i style="color: chocolate;" class="fas fa-eye"></i></a></td>
-              <td> 
+              <td style="text-align:right;" > 
                 <button [routerLink]="['EditUser/', u.id]" class="btn btn-primary" style="color:white; margin-right: 1rem;"><span><i style="color:white" class="fa fa-pen"></i></span></button>
-                <button class="btn btn-danger" (click)="DelteUser(u.id)"><span><i class="fas fa-trash"></i></span></button> 
+                <button class="btn btn-danger" (click)="DelteUser(u.id)" style="color:white; margin-right: 1rem;"><span><i class="fas fa-trash"></i></span></button>
+                <button class="btn btn-secondary" (click)="DelteUser(u.id)"><span><i class="fas fa-key"></i></span></button> 
+ 
               </td>
             </tr>
          

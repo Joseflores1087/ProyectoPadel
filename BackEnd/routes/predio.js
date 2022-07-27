@@ -34,6 +34,6 @@ router.post('/NewCancha',upload.single('file'),NewCancha);
 
 router.post('/DeleteCancha/:id', DeleteCancha);
 
-router.get('/GetCanchaById/:id', GetCanchaById)
+router.post('/GetCanchaById/:id', GetCanchaById)
 
 module.exports = router;

@@ -68,10 +68,9 @@ const GetCancha = async (req=request , res = response) => {
 //-------------------------------------------------------
 //GET----------------------------------------------------
 const GetCanchaById = async (req, res = response) => {
-  console.log(req.params);
   const { id } = req.params;
   try {
-    cancha = await pool.query("SELECT * FROM cancha WHERE id =?", [id]);
+    cancha = await pool.query("SELECT * FROM canchas WHERE id_predio =?", [id]);
     if (cancha.length > 0) {
       return res.send(cancha);
     } else {
