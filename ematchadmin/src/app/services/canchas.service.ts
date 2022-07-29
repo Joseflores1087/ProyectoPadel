@@ -11,12 +11,13 @@ export class CanchasService {
 
   url = 'http://localhost:45001';
 
+
   GetCancha(){
     return this.http.get(`${this.url}/api/predio/GetPredio`);
   }
 
   GetCanchaById(id:any): Observable<Cancha[]>{
-    return this.http.get<Cancha[]>(`${this.url}/api/cancha/GetCanchaById/${id}`);
+    return this.http.get<Cancha[]>(`${this.url}/api/predio/GetCanchaById/${id}`);
   }
 
   NewCancha(bodyFile:any):Observable<object>{

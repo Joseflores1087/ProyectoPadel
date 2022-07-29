@@ -12,16 +12,24 @@ import { TurnosService } from 'src/app/services/turnos.service';
 })
 export class ListTurnosComponent implements OnInit {
   canchas: Canchas[] = [];
+  canchasbyId: any;
   Turno: any;
+  id= 4;
   private destroy$ = new Subject<any>();
   constructor(private turno: TurnosService, private predio: CanchasService) { }
 
   ngOnInit(): void {
-    this.getCancha();
-    this.turno.GetTurnos().subscribe((res: any) => {
-      this.Turno = res;
-    })
+    this.GetCanchaById(this.id);
+   
   }
+
+GetCanchaById(id:any){
+  this.predio.GetCanchaById(this.id).subscribe(res=>{
+    console.log(res);
+    
+    this.canchasbyId = res;
+  })
+}
 
   getCancha() {
     this.predio.GetCancha().subscribe((res: any) => {
@@ -30,5 +38,16 @@ export class ListTurnosComponent implements OnInit {
 
     })
   }
+ 
+  getTurnos(){
+    this.turno.GetTurnos().subscribe((res: any) => {
+      this.Turno = res;
+    })
+  }
 
+Horacancha(id:any){
+  console.log(id);
+  redi
+
+}
 }

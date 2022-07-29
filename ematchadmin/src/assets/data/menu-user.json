@@ -1,14 +1,18 @@
 [
     {
+        "nombre":"Predios",
+        "redirect":"/dashboard/canchas"
+    },
+    {
         "nombre":"Turnos",
         "redirect":"/dashboard/turnos"
     },
     {
         "nombre":"Jugadores",
-        "redirect":"/dashboard/Jugadores"
+        "redirect":"/dashboard/jugador"
     },
     {
         "nombre":"Horarios",
-        "redirect":"/dashboard/NewHorario"
+        "redirect":"/dashboard/newHorario"
     }
   ]

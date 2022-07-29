@@ -1,19 +1,15 @@
 <div class="container-fluid py-4">
     <div class="">
-        <div class="card" style="width: 100%; margin-top: 1rem;">  
+        <div  class="card" style="width: 100%; margin-top: 1rem;">  
           <div class="card-header pb-0">
             <div class="d-flex align-items-center">
               <p class="mb-0">PREDIOS</p>
               <button class="btn btn-primary btn-sm ms-auto" routerLink="NewCancha">Agregar</button>
             </div>
           </div>
-          <div class="card-body">
-            <!-- <div class="card-title">Card title
-                <button class="btn btn-primary position-relative end-0" routerLink="NewCancha">Agregar</button>
-            </div> -->
-            
+          <div class="card-body" >
             <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-              <thead *ngIf="data?.length != 0">
+              <thead>
                 <tr>
                   
                   <th>NOMBRE</th>

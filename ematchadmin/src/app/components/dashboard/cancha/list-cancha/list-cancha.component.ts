@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
 import { CanchasService } from 'src/app/services/canchas.service';
+import { PredioService } from 'src/app/services/predio.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,8 +14,10 @@ export class ListCanchaComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   data: any;
+  rol = localStorage.getItem('user_rol');
+  user= localStorage.getItem('user_id');
   private destroy$ = new Subject<any>();
-  constructor(private cancha: CanchasService) { }
+  constructor(private cancha: CanchasService, private predio: PredioService) { }
 
 
   ngOnInit(): void {
@@ -25,10 +28,20 @@ export class ListCanchaComponent implements OnInit, OnDestroy {
         url: '///cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json',
       }
     };
-    this.cancha.GetCancha().subscribe((res: any) => {
-      this.data = res;
-      this.dtTrigger.next(res);
-    });
+    if(this.rol == '1'){
+      this.cancha.GetCancha().subscribe((res: any) => {
+        this.data = res;
+        this.dtTrigger.next(res);
+      });
+    }else if (this.rol == '2'){
+      this.predio.GetPredioByid(this.user).subscribe((res: any) => {
+        this.data = res;
+        console.log(this.data);
+        
+        this.dtTrigger.next(res);
+      });
+    }
+    
   }
 
   DeleteCancha(cancha: number) {

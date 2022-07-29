@@ -14,7 +14,7 @@ export class PredioService {
     return this.http.get(`${this.url}/api/predio/GetPredio`);
   }
 
-  GetPredioByid(id:number){
+  GetPredioByid(id:any){
     console.log(id);
     
     return this.http.get(`${this.url}/api/predio/GetPredioById/${id}`);
